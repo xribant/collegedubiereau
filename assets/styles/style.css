@@ -469,7 +469,7 @@ h1, h2, h3, h4, h5,
   margin-bottom: 0px;
   z-index: 1999;
   position: absolute;
-  top: 0;
+  top: calc(100vh - 95%);
   width: 100%;
   padding: 1rem; }
   @media (max-width: 991.98px) {
@@ -814,13 +814,12 @@ h1, h2, h3, h4, h5,
         min-height: 777px; } 
 }
 
+/* .site-section-cover.overlay {
+    position: relative;
+} */
+
 .site-section-cover.overlay {
     position: relative;
-}
-
-.site-section-cover.overlay:before {
-    position: absolute;
-    content: "";
     top: 0;
     left: 0;
     right: 0;

@@ -196,6 +196,9 @@
         "page_refresh_confirmation_buttons":false,
         "website_name":"College du Biéreau"});
       });
+      document.querySelector(".banner__close").addEventListener("click", function () {
+        this.closest(".banner").style.display = "none";
+      });
     </script>
 
 	</body>
