@@ -814,17 +814,18 @@ h1, h2, h3, h4, h5,
         min-height: 777px; } 
 }
 
-/* .site-section-cover.overlay {
-    position: relative;
-} */
-
 .site-section-cover.overlay {
     position: relative;
+} 
+
+.site-section-cover.overlay:before {
+    position: absolute;
+    content: "";
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1; 
 }
 
@@ -1691,6 +1692,7 @@ h1, h2, h3, h4, h5,
   padding: 20px; }
 
 .menu-wrap {
+  margin-top: 2.5rem;
   padding: 10px 20px;
   background: #fff;
   border-radius: 100px; }
