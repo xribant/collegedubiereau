@@ -11,15 +11,7 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-import $ from 'jquery';
-import jqueryMigrate from 'jquery-migrate';
-import jqueryAnimateNumber from 'jquery.animate-number';
-import jqueryEasing from 'jquery.easing';
-import magnificPopup from 'magnific-popup';
-import scrollax from 'scrollax';
-import owl from 'owl.carousel';
-
-import './js/jquery.stellar.min';
-import './js/jquery.waypoints.min';
-
 import './js/main';
+
+
+

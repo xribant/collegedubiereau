@@ -3,16 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700|Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 		<title>Collège du Biéreau |
 			{% block title %}{% endblock %}
 		</title>
-
-		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-
-        <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
 
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 		{% block stylesheets %}
@@ -20,172 +16,188 @@
 		{% endblock %}
 
 	</head>
-	<body>
-		{% block body %}
-			<div class="py-2 bg-primary">
-				<div class="container">
-					<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-						<div class="col-lg-12 d-block">
-							<div class="row d-flex">
-								<div class="col-md-5 pr-4 d-flex topper align-items-center">
-									<div class="icon bg-fifth mr-2 d-flex justify-content-center align-items-center">
-										<span class="icon-map"></span>
-									</div>
-									<span class="text">198 West 21th Street, Suite 721 New York NY 10016</span>
-								</div>
-								<div class="col-md pr-4 d-flex topper align-items-center">
-									<div class="icon bg-secondary mr-2 d-flex justify-content-center align-items-center">
-										<span class="icon-paper-plane"></span>
-									</div>
-									<span class="text">youremail@email.com</span>
-								</div>
-								<div class="col-md pr-4 d-flex topper align-items-center">
-									<div class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center">
-										<span class="icon-phone2"></span>
-									</div>
-									<span class="text">+ 1235 2355 98</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-            <!-- Start NAV -->
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
-				<div class="container d-flex align-items-center">
-					<a class="navbar-brand" href="{{ asset('app_home') }}">Collège du Biéreau</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="oi oi-menu"></span>
-						Menu
-					</button>
-					<div class="collapse navbar-collapse" id="ftco-nav">
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active">
-								<a href="index.html" class="nav-link pl-0">Home</a>
-							</li>
-							<li class="nav-item">
-								<a href="about.html" class="nav-link">About</a>
-							</li>
-							<li class="nav-item">
-								<a href="teacher.html" class="nav-link">Teacher</a>
-							</li>
-							<li class="nav-item">
-								<a href="courses.html" class="nav-link">Courses</a>
-							</li>
-							<li class="nav-item">
-								<a href="pricing.html" class="nav-link">Pricing</a>
-							</li>
-							<li class="nav-item">
-								<a href="blog.html" class="nav-link">Blog</a>
-							</li>
-							<li class="nav-item">
-								<a href="contact.html" class="nav-link">Contact</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-			<!-- END nav -->
-		{% endblock %}
+	<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-        {% block content %}
-        {% endblock %}
+    <div class="site-wrap" id="home-section">
 
-         <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-              <h2 class="ftco-heading-2">Recent Blog</h2>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-5 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Dec 25, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5 ml-md-4">
-              <h2 class="ftco-heading-2">Links</h2>
-              <ul class="list-unstyled">
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Services</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Deparments</a></li>
-                <li><a href="#"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">Subscribe Us!</h2>
-              <form action="#" class="subscribe-form">
-                <div class="form-group">
-                  <input type="text" class="form-control mb-2 text-center" placeholder="Enter email address">
-                  <input type="submit" value="Subscribe" class="form-control submit px-3">
-                </div>
-              </form>
-            </div>
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2 mb-0">Connect With Us</h2>
-            	<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
+        <div class="site-mobile-menu-body"></div>
       </div>
-    </footer>
+
+      <header class="site-navbar site-navbar-target" role="banner">
+
+        <div class="container mb-3">
+          <div class="d-flex align-items-center">
+            <div class="site-logo mr-auto">
+              <a href="{{ path('app_home') }}">
+                <img src="{{ asset('build/logo-biereau.png') }}" alt="Logo Biéreau">
+              </a>
+            </div>
+            <div class="site-quick-contact d-none d-lg-flex ml-auto ">
+              <div class="d-flex site-info align-items-center mr-5">
+                <span class="block-icon mr-3"><span class="icon-map-marker text-yellow"></span></span>
+                <span>2 Rue du Collège, 1348 Ottignies-Louvain-La-Neuve</span>
+              </div>
+              <div class="d-flex site-info align-items-center mr-5">
+                <span class="block-icon mr-3"><span class="icon-phone"></span></span>
+                <span>+32 (0)10 45 03 06</span>
+              </div>
+              <div class="d-flex site-info align-items-center">
+                <span class="block-icon mr-3"><span class="icon-envelope-o text-success"></span></span>
+                <span>direction@collegedubiereau.be</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div class="menu-wrap d-flex align-items-center">
+            <span class="d-inline-block d-lg-none"><a href="#" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-black"></span></a></span>
+
+              
+
+              <nav class="site-navigation text-left mr-auto d-none d-lg-block" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav mr-auto ">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                      L'école
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Présentation</a>
+                      <a class="dropdown-item" href="#">Projet éducatif</a>
+                      <a class="dropdown-item" href="#">Plan de pilotage</a>
+                      <a class="dropdown-item" href="#">Règlement des études</a>
+                      <a class="dropdown-item" href="#">Règlement d'ordre intérieur</a>
+                      <a class="dropdown-item" href="#">"Vivre ensemble" de l'école primaire</a>
+                      <a class="dropdown-item" href="#">Charte Internet</a>
+                    </div>
+                  </li>
+                  <li><a href="{{ path('app_infos_pratiques') }}" class="nav-link">Infos pratiques</a></li>
+                  <li><a href="about.html" class="nav-link">L'équipe</a></li>
+                  <li><a href="packages.html" class="nav-link">Agenda</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                      Collaborations
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Association des parents</a>
+                      <a class="dropdown-item" href="#">Comité des fêtes</a>
+                      <a class="dropdown-item" href="#">Conseil de participation</a>
+                      <a class="dropdown-item" href="#">PMS</a>
+                      <a class="dropdown-item" href="#">PSE</a>
+                      <a class="dropdown-item" href="#">UCL et Kots à projets</a>
+                      <a class="dropdown-item" href="#">SEGEC et FEDEFOC</a>
+                    </div>
+                  </li>
+                  <li><a href="gallery.html" class="nav-link">Parascolaire</a></li>
+                  
+                </ul>
+              </nav>
+
+              <div class="top-social ml-auto">
+                <a href="https://www.facebook.com/apbiereau" target="_blank" title="Page Facebook de l'association des parents"><span class="icon-facebook text-teal"></span></a>
+              </div>
+          </div>
+        </div>
+      </header>
+
+      {% block content %}
+      {% endblock %}
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 mb-4">
+              <h2 class="footer-heading mb-4">Contact</h2>
+               <ul class="list-unstyled contact">
+                    <li><i class="fa-solid fa-phone"></i><span>+32 (0)10 45 03 06</span></li>
+                    <li><a href="mailto:direction@collegedubiereau.be" target="_blank"><i class="fa-solid fa-envelope"></i><span>direction@collegedubiereau.be</span></a></li>
+                    <li><i class="fa-solid fa-location-dot"></i><span>2 Rue du Collège, 1348 Ottignies-Louvain-La-Neuve</span></li>
+                  </ul> 
+            </div>    
+            <div class="col-lg-6 ml-auto">
+              <div class="row">
+                <div class="col-lg-6">
+                  <h2 class="footer-heading mb-4">Navigation</h2>
+                  <ul class="list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                  </ul>                 
+                </div>  
+                <div class="col-lg-6">
+                  <h2 class="footer-heading mb-4">Navigation</h2>
+                  <ul class="list-unstyled">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                  </ul>                 
+                </div>     
+              </div>
+            </div>
+          </div>
+          <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+              <div class="border-top pt-5">
+                <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy; <script>document.write(new Date().getFullYear());</script> Collège du Biéreau | Tous droits réservés | Site Web réalisé avec <i class="icon-heart text-danger" aria-hidden="true"></i> par <a href="https://www.mywebcreation.be" target="_blank" ><img src="{{ asset('build/mwc-logo-color.png') }}" alt="My Web Creation" style="height: 2rem;"></a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script src="{{ asset('assets/front/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery-migrate-3.0.0.js') }}"></script>
+    <script src="{{ asset('assets/front/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery.animateNumber.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('assets/front/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/front/js/aos.js') }}"></script>
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
-		<!-- loader -->
-		<div id="ftco-loader" class="show fullscreen">
-			<svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
-		</div>
 
+    <!-- Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
+    <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+      document.addEventListener('DOMContentLoaded', function () {
+      cookieconsent.run({
+        "notice_banner_type":"simple",
+        "consent_type":"express",
+        "palette":"light",
+        "language":"fr",
+        "page_load_consent_levels":["strictly-necessary"],
+        "notice_banner_reject_button_hide":false,
+        "preferences_center_close_button_hide":false,
+        "page_refresh_confirmation_buttons":false,
+        "website_name":"College du Biéreau"});
+      });
+    </script>
 
-		
 	</body>
 </html>
 

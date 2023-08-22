@@ -1,11 +1,13 @@
-@import './animate.css';
-@import './aos.css';
+@import '../fonts/icomoon/style.css';
 @import './bootstrap.min.css';
-@import './flaticon.css';
-@import './icomoon.css';
-@import './ionicons.min.css';
-@import './magnific-popup.css';
-@import './main.css';
-@import './open-iconic-bootstrap.min.css';
+@import './bootstrap-datepicker.css';
+@import './jquery.fancybox.min.css';
 @import './owl.carousel.min.css';
-@import './owl.theme.default.min.css'; 
+@import './owl.theme.default.min.css';
+@import '../fonts/flaticon/font/flaticon.css';
+@import './aos.css';
+@import './style.css';
+@import './video-wrap.css';
+
+
+
