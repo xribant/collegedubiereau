@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-#[Route('/admin/utilisateur')]
+#[Route('/admin/utilisateurs')]
 #[UniqueEntity('email')]
 class UserController extends AbstractController
 {
