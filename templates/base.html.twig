@@ -32,13 +32,8 @@
       <header class="site-navbar site-navbar-target" role="banner">
 
         <div class="container mb-3">
-          <div class="d-flex align-items-center">
-            <div class="site-logo mr-auto">
-              <a href="{{ path('app_home') }}">
-                <img src="{{ asset('build/logo-biereau.png') }}" alt="Logo Biéreau">
-              </a>
-            </div>
-            <div class="site-quick-contact d-none d-lg-flex ml-auto ">
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="site-quick-contact d-none d-lg-flex">
               <div class="d-flex site-info align-items-center mr-5">
                 <span class="block-icon mr-3"><span class="icon-map-marker text-yellow"></span></span>
                 <span>2 Rue du Collège, 1348 Ottignies-Louvain-La-Neuve</span>
@@ -59,8 +54,9 @@
         <div class="container">
           <div class="menu-wrap d-flex align-items-center">
             <span class="d-inline-block d-lg-none"><a href="#" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-black"></span></a></span>
-
-              
+            <a class="nav-logo" href="{{ path('app_home') }}">
+              <img src="{{ asset('build/logo-biereau.png') }}" alt="Logo Biéreau">
+            </a>
 
               <nav class="site-navigation text-left mr-auto d-none d-lg-block" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav mr-auto ">
@@ -151,7 +147,7 @@
               <div class="border-top pt-5">
                 <p>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy; <script>document.write(new Date().getFullYear());</script> Collège du Biéreau | Tous droits réservés | Site Web réalisé avec <i class="icon-heart text-danger" aria-hidden="true"></i> par <a href="https://www.mywebcreation.be" target="_blank" ><img src="{{ asset('build/mwc-logo-color.png') }}" alt="My Web Creation" style="height: 2rem;"></a>
+              Copyright &copy; <script>document.write(new Date().getFullYear());</script> Collège du Biéreau | Tous droits réservés | Site web réalisé avec <i class="icon-heart text-danger" aria-hidden="true"></i> par <a href="https://www.mywebcreation.be" target="_blank" ><img src="{{ asset('build/mwc-logo-color.png') }}" alt="My Web Creation" style="height: 2rem;"></a>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               </p>
               </div>

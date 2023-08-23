@@ -1697,6 +1697,24 @@ h1, h2, h3, h4, h5,
   background: #fff;
   border-radius: 100px; }
 
+.menu-wrap .nav-logo img {
+  height: 50px;
+  margin-left: 2rem; 
+  margin-right: 2rem;
+}
+
+@media (max-width: 991.98px) {
+  .menu-wrap .nav-logo {
+    width: 100%; 
+  }
+
+  .menu-wrap .nav-logo img {
+    height: 50px;
+    display: block;
+    margin: auto; 
+  }
+}
+
 .subtitle {
   font-size: 13px;
   text-transform: uppercase;
