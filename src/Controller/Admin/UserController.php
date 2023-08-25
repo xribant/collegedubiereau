@@ -32,7 +32,8 @@ class UserController extends AbstractController
     {
         return $this->render('admin/user/index.html.twig', [
             'users' => $userRepository->findAll(),
-            'active_menu' => 'users'
+            'active_menu' => 'users',
+            'breadcrumbs' => ['Utilisateurs','Index']
         ]);
     }
 

@@ -12,7 +12,8 @@ class AdminController extends AbstractController
     public function index(): Response
     {
         return $this->render('admin/admin_base.html.twig', [
-            'active_menu' => 'dashboard'
+            'active_menu' => 'dashboard',
+            'breadcrumbs' => ['Dashboard']
         ]);
     }
 }

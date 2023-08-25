@@ -2093,7 +2093,7 @@ html.no-overflowscrolling.sidebar-light:not(.dark) .inner-menu .nano {
 	font-size: 0;
 	line-height: 50px;
 	margin: 0;
-	padding: 0;
+	padding-right: 2rem;
 }
 
 .page-header .breadcrumbs li {
