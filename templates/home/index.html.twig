@@ -4,16 +4,18 @@
 
 {% block content %}
 
+{% if news %}
 <div class="banner">
-      <div class="banner__content">
-        <div class="banner__text">
-          <strong>Reminder:</strong> your subscription expires in 22 days. Renew to avoid account suspension.
-        </div>
-        <button class="banner__close" type="button">
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </button>
-      </div>
+  <div class="banner__content">
+    <div class="banner__text">
+      <strong>Reminder:</strong> {{ news }}
     </div>
+    <button class="banner__close" type="button">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+{% endif %}
 
  <div class="ftco-blocks-cover-1">
        
