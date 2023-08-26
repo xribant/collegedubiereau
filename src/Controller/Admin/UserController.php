@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-#[Route('/admin/utilisateur')]
+#[Route('/admin/utilisateurs')]
 #[UniqueEntity('email')]
 class UserController extends AbstractController
 {
@@ -32,7 +32,8 @@ class UserController extends AbstractController
     {
         return $this->render('admin/user/index.html.twig', [
             'users' => $userRepository->findAll(),
-            'active_menu' => 'users'
+            'active_menu' => 'users',
+            'breadcrumbs' => ['Utilisateurs','Index']
         ]);
     }
 
