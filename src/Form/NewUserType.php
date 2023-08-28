@@ -9,10 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 
 class NewUserType extends AbstractType
@@ -21,71 +18,41 @@ class NewUserType extends AbstractType
     {
         $builder
         ->add('email', EmailType::class, [
-            'required' => true,
             'label' => false,
             'attr' => [
-                'placeholder' => 'E-Mail',
+                'placeholder' => 'Ex: big-mac@mcdonald.com',
                 'class' => 'form-control'
             ]
         ])
         ->add('firstName', TextType::class, [
-            'required' => true,
             'label' => false,
             'attr' => [
-                'placeholder' => 'Prénom',
+                'placeholder' => 'Ex: Ronald',
                 'class' => 'form-control'
             ]
         ])
         ->add('lastName', TextType::class, [
-            'required' => true,
             'label' => false,
             'attr' => [
-                'placeholder' => 'Nom',
+                'placeholder' => 'Ex: McDonald',
                 'class' => 'form-control'
             ]
         ])
-        ->add('password', RepeatedType::class, [
+        ->add('roles', ChoiceType::class, [
             'label' => false,
-            'required' => true,
-            'type' => PasswordType::class,
-            'invalid_message' => 'Les mot de passe saisis doivent correspondre',
-            'attr' => [
-                'class' => 'form-control form-control-lg form-control-a'
-            ],
-            'first_options' => [
-                'label' => false,
-            ],
-            'second_options' => [
-                'label' => 'Confirmer le mot de passe',
-            ]
-        ])
-        ->add('Roles', ChoiceType::class, [
-            'label' => false,
-            'required' => true,
             'expanded' => false,
             'multiple' => false,
             'choices' => [
-                'User' => 'ROLE_USER',
-                'Admin' => 'ROLE_ADMIN'
+                'Utilisateur' => 'ROLE_USER',
+                'Administrateur' => 'ROLE_ADMIN'
             ],
             'attr' => [
                 'class' => 'form-control'
             ]
-        ])
-        ->add('imageFile', VichImageType::class, [
-            'required' => false,
-            'label' => false,
-            'download_link' => false,
-            'download_uri' => false,
-            'delete_label' => 'Supprimer l\'image courante',
-            'attr' => [
-                'class' => 'imageField'
-            ]
-        ])
-        ;
+        ]);
 
         // Data transformer
-        $builder->get('Roles')
+        $builder->get('roles')
             ->addModelTransformer(new CallbackTransformer(
                 function ($rolesArray) {
                      // transform the array to a string

@@ -37,7 +37,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank(message: 'Veuillez entrer un mot de passe') ]
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]

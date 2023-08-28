@@ -1,22 +1,98 @@
+<!doctype html>
+<html class="fixed">
+	<head>
 
+		<!-- Basic -->
+		<meta charset="UTF-8">
 
-{% block title %}Reset your password{% endblock %}
+		<meta name="keywords" content="" />
+		<meta name="description" content="">
+		<meta name="author" content="My Web Creation">
 
-{% block body %}
-    {% for flash_error in app.flashes('reset_password_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-    <h1>Reset your password</h1>
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Enter your email address and we will send you a
-                link to reset your password.
-            </small>
-        </div>
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
 
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
-{% endblock %}
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="{{ asset('assets/admin/vendor/bootstrap/css/bootstrap.css') }}" />
+		<link rel="stylesheet" href="{{ asset('assets/admin/vendor/animate/animate.compat.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/admin/vendor/font-awesome/css/all.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('assets/admin/vendor/boxicons/css/boxicons.min.css') }}" />
+		<link rel="stylesheet" href="{{ asset('assets/admin/vendor/magnific-popup/magnific-popup.css') }}" />
+		<link rel="stylesheet" href="{{ asset('assets/admin/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css') }}" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="{{ asset('assets/admin/css/theme.css') }}" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="{{ asset('assets/admin/css/skins/default.css') }}" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}">
+
+		<!-- Head Libs -->
+		<script src="{{ asset('assets/admin/vendor/modernizr/modernizr.js') }}"></script>
+
+	</head>
+	<body>
+        {% for flash_error in app.flashes('reset_password_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+		<!-- start: page -->
+		<section class="body-sign">
+			<div class="center-sign">
+				<a href="/" class="logo float-left">
+					<img src="{{ asset('assets/admin/img/logo-biereau-rond-blanc.png') }}" height="100" alt="College du Biéreau" />
+				</a>
+
+				<div class="panel card-sign">
+					<div class="card-title-sign mt-3 text-end">
+						<h2 class="title text-uppercase font-weight-bold m-0"><i class="bx bx-user-circle me-1 text-6 position-relative top-5"></i> Récupération du mot de passe</h2>
+					</div>
+					<div class="card-body">
+						<div class="alert alert-info">
+							<p class="m-0">Entrez votre e-mail pour recevoir les instructions de récupération!</p>
+						</div>
+
+						{{ form_start(requestForm) }}
+							<div class="form-group mb-0">
+								<div class="input-group">
+                                    {{ form_row(requestForm.email) }}                                   
+                                    <button class="btn btn-primary btn-lg pull-right">Envoyer</button>
+								</div>
+							</div>
+						{{ form_end(requestForm) }}
+					</div>
+				</div>
+
+				<p class="text-center text-muted mt-3 mb-3">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Collège du Biéreau | Tous droits réservés | Site web réalisé par <a href="https://www.mywebcreation.be" target="_blank" ><img src="{{ asset('build/mwc-logo-color.png') }}" alt="My Web Creation" style="height: 2rem;"></a></p>
+			</div>
+		</section>
+		<!-- end: page -->
+
+		<!-- Vendor -->
+		<script src="{{ asset('assets/admin/vendor/jquery/jquery.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/jquery-browser-mobile/jquery.browser.mobile.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/popper/umd/popper.min.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/common/common.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/nanoscroller/nanoscroller.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/magnific-popup/jquery.magnific-popup.js') }}"></script>
+		<script src="{{ asset('assets/admin/vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
+
+		<!-- Specific Page Vendor -->
+
+		<!-- Theme Base, Components and Settings -->
+		<script src="{{ asset('assets/admin/js/theme.js') }}"></script>
+
+		<!-- Theme Custom -->
+		<script src="{{ asset('assets/admin/js/custom.js') }}"></script>
+
+		<!-- Theme Initialization Files -->
+		<script src="{{ asset('assets/admin/js/theme.init.js') }}"></script>
+
+	</body>
+</html>

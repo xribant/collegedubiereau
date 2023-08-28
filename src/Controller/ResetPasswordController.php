@@ -19,6 +19,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 #[Route('/reset-password')]
 class ResetPasswordController extends AbstractController
@@ -86,7 +87,7 @@ class ResetPasswordController extends AbstractController
 
         $token = $this->getTokenFromSession();
         if (null === $token) {
-            throw $this->createNotFoundException('No reset password token found in the URL or in the session.');
+            throw $this->createNotFoundException('Pas de token de reset identifié dans la session courante.');
         }
 
         try {
@@ -157,7 +158,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('no-reply@mcollegedubiereau.be', 'Admin collegedubiereau.be'))
+            ->from(new Address('no-reply@collegedubiereau.be', 'Admin collegedubiereau.be'))
             ->to($user->getEmail())
             ->subject('Récupération de mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')
@@ -165,8 +166,11 @@ class ResetPasswordController extends AbstractController
                 'resetToken' => $resetToken,
             ])
         ;
-
-        $mailer->send($email);
+        try {
+            $mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            echo '<strong>'.$e->getMessage().'</strong>';
+        }
 
         // Store the token object in session for retrieval in check-email route.
         $this->setTokenObjectInSession($resetToken);
