@@ -47,6 +47,7 @@
             "migrations/.gitignore"
         ]
     },
+<<<<<<< HEAD
     "friendsofsymfony/ckeditor-bundle": {
         "version": "2.4",
         "recipe": {
@@ -58,6 +59,10 @@
         "files": [
             "config/packages/fos_ckeditor.yaml"
         ]
+=======
+    "php-flasher/flasher-symfony": {
+        "version": "v1.15.3"
+>>>>>>> admin-dashboard
     },
     "phpunit/phpunit": {
         "version": "9.5",
