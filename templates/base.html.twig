@@ -3,6 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="keywords" content="école, Biéreau, collège, maternelle, primaire, fondamentale, louvain-la-neuve, segec, élèves, verdure, nature, valeurs"> 
+		<meta name="description" content="Le collège du biéreau est une école fondamentale maternelle et primaire au coeur de  la ville de Louvain-La-Neuve. Elle se compose d'une équipe dynamique et à l'écoute avec une guidance bâtie sur de vraies valeurs et un projet pédagogique ambitieux.">
+
 		<link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700|Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -66,7 +70,7 @@
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="{{ path('app_ecole_presentation') }}">Présentation</a>
-                      <a class="dropdown-item" href="#">Projet éducatif</a>
+                      <a class="dropdown-item" href="{{ path('app_projet_pedagogique') }}">Projet pédagogique</a>
                       <a class="dropdown-item" href="#">Plan de pilotage</a>
                       <a class="dropdown-item" href="#">Règlement des études</a>
                       <a class="dropdown-item" href="#">Règlement d'ordre intérieur</a>
@@ -74,9 +78,9 @@
                       <a class="dropdown-item" href="#">Charte Internet</a>
                     </div>
                   </li>
-                  <li><a href="{{ path('app_infos_pratiques') }}" class="nav-link">Infos pratiques</a></li>
-                  <li><a href="about.html" class="nav-link">L'équipe</a></li>
-                  <li><a href="packages.html" class="nav-link">Agenda</a></li>
+                  <li><a href="#" class="nav-link">Infos pratiques</a></li>
+                  <li><a href="#" class="nav-link">L'équipe</a></li>
+                  <li><a href="#" class="nav-link">Agenda</a></li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                       Collaborations
@@ -91,7 +95,7 @@
                       <a class="dropdown-item" href="#">SEGEC et FEDEFOC</a>
                     </div>
                   </li>
-                  <li><a href="gallery.html" class="nav-link">Parascolaire</a></li>
+                  <li><a href="#" class="nav-link">Parascolaire</a></li>
                   
                 </ul>
               </nav>
@@ -122,21 +126,21 @@
                 <div class="col-lg-6">
                   <h2 class="footer-heading mb-4">Navigation</h2>
                   <ul class="list-unstyled">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">L'école</a></li>
+                    <li><a href="#">Infos pratiques</a></li>
+                    <li><a href="#">L'équipe</a></li>
+                    <li><a href="#">Agenda</a></li>
+                    <li><a href="#">Parascolaire</a></li>
                   </ul>                 
                 </div>  
                 <div class="col-lg-6">
-                  <h2 class="footer-heading mb-4">Navigation</h2>
+                  <h2 class="footer-heading mb-4">Partenaires</h2>
                   <ul class="list-unstyled">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">AP School</a></li>
+                    <li><a href="#">Association des parents</a></li>
+                    <li><a href="#">Comité des fêtes</a></li>
+                    <li><a href="#">PMS</a></li>
+                    <li><a href="#">PSE</a></li>
                   </ul>                 
                 </div>     
               </div>
@@ -172,6 +176,7 @@
     <script src="{{ asset('assets/front/js/jquery.easing.1.3.js') }}"></script>
     <script src="{{ asset('assets/front/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('assets/front/js/aos.js') }}"></script>
+    <script src="{{ asset('assets/front/js/main.js') }}"></script>
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}

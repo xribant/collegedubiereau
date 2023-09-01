@@ -20,8 +20,6 @@
     </div>
 </div>
 
-
-
 <div class="site-section">
     <div class="container">
     <div class="row">
@@ -39,142 +37,343 @@
     </div>
 </div>
 
-<div class="site-section bg-teal">
-    <div class="container">
-    <div class="row justify-content-center text-center mb-5 section-2-title">
-        <div class="col-md-6">
-        <span class="text-cursive h5 text-red">The Team</span>
-        <h3 class="text-white text-center">Meet The Team</h3>
-        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nesciunt nemo vel earum maxime neque!</p>
-        </div>
-    </div>
-    <div class="row align-items-stretch">
+ <div class="site-section bg-info">
+      <div class="container">
+        <div class="row">
 
-        <div class="col-lg-4 col-md-6 mb-5">
-        <div class="post-entry-1 h-100 person-1 teal">
-            
-            <img src="images/person_1.jpg" alt="Image"
-                class="img-fluid">
-        
-            <div class="post-entry-1-contents">
-            <span class="meta">Founder</span>
-            <h2>James Doe</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+            <div class="col-lg-4 mb-5">
+                <div class="package text-center bg-white">
+                    <span class="img-wrap"><img src="{{ asset('build/contact.png') }}" alt="Coordonnées" class="img-fluid"></span>
+                    <h3 class="text-teal">Coordonnées de l'établissement</h3>
+                    <p><button type="button" class="btn btn-success btn-custom-1 mt-4" data-toggle="modal" data-target="#coordonnee">Détails</button></p>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="coordonnee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-teal" id="exampleModalLabel">Coordonnées de l'établissement</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-left">
+                                    <p>
+                                        Le Collège du Biéreau est situé à côté de la Ferme du Biéreau, entre la Place Polyvalente et le Lycée Martin V, section Biéreau.
+                                    </p>
+                                    <p>
+                                        <strong>Téléphone général :</strong> +32 (0)10.45.03.06
+                                    </p>
+                                    <p><strong>Adresse officielle pour les deux sections :</strong> 2, rue du Collège à 1348 Louvain-la-Neuve. L’école maternelle porte le numéro 2A.</p>
+                                    <p><strong>Courriel :</strong> secretariat@collegedubiereau.be ou direction@collegedubiereau.be</p>
+                                    <p>Le numéro d’entreprise de l'ASBL "Collège du Biéreau" est le BE0412.471.417</p>
+                                    <p>Son objet social, tel que défini dans les Statuts parus au Moniteur belge, est le suivant: " L'association a pour but d'organiser, d'administrer et de promouvoir l'éducation et l'enseignement. Pour atteindre ce but, elle gère un établissement d'enseignement fondamental maternel et primaire mixte du réseau d'enseignement libre catholique."</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-5">
-        <div class="post-entry-1 h-100 person-1 yellow">
-            
-            <img src="images/person_2.jpg" alt="Image"
-                class="img-fluid">
-        
-            <div class="post-entry-1-contents">
-            <span class="meta">Founder</span>
-            <h2>James Doe</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+
+            <div class="col-lg-4 mb-5">
+                <div class="package text-center bg-white">
+                <span class="img-wrap"><img src="{{ asset('build/family-tree.png') }}" alt="Organigramme" class="img-fluid"></span>
+                <h3 class="text-success">Organigramme interne</h3>
+                <p><button type="button" class="btn btn-warning btn-custom-1 mt-4" data-toggle="modal" data-target="#organigramme">Détails</button></p>
+
+                <!-- Modal -->
+                    <div class="modal fade" id="organigramme" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-teal" id="exampleModalLabel">Organigramme interne : rôle et mission des différents acteurs</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-left">
+                            <p>
+                                Une école est une structure complexe, qui fait intervenir de nombreux acteurs. Certains partagent leur quotidien au sein même de l'institution, d'autres y participent de manière plus lointaine et ont des liens réguliers ou plus ponctuels.
+                                Le Conseil d’Administration, appelé dans nos établissements « Pouvoir organisateur (P.O.) » est l’organe de décision de l’école.
+                                Tous les partenaires jouent un rôle actif dans l'école et y assurent le meilleur encadrement pour les élèves.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
+            <div class="col-lg-4 mb-5">
+                <div class="package text-center bg-white">
+                <span class="img-wrap"><img src="{{ asset('build/leader.png') }}" alt="Organigramme" class="img-fluid"></span>
+                <h3 class="text-danger">Le Pouvoir Organisateur (PO)</h3>
+                <p><button type="button" class="btn btn-danger btn-custom-1 mt-4" data-toggle="modal" data-target="#po">Détails</button></p>
 
-        <div class="col-lg-4 col-md-6 mb-5">
-        <div class="post-entry-1 h-100 person-1 red">
-            
-            <img src="images/person_3.jpg" alt="Image"
-                class="img-fluid">
-        
-            <div class="post-entry-1-contents">
-            <span class="meta">Founder</span>
-            <h2>James Doe</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+                <!-- Modal -->
+                    <div class="modal fade" id="po" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-teal" id="exampleModalLabel">Le Pouvoir Organisateur (PO)</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-left">
+                            <p class="text-left">
+                            Chargé de gérer et de superviser le fonctionnement de l'école, le Pouvoir organisateur est composé de parents et anciens parents aux expériences personnelles et professionnelles diverses. Bénévoles, ils apportent chacun énergie et compétences au service du projet commun.
+                            Une des particularités de l’enseignement libre réside dans le fait que les écoles sont organisées par des PO de droit privé, alors que l’enseignement officiel est organisé par les pouvoirs publics communautaires, provinciaux ou communaux.
+                            Constitué en association sans but lucratif (ASBL), le Collège du Biéreau fonctionne avec une assemblée générale (AG) et un Conseil d’administration (CA) dont les membres sont nommés par l’AG et agissent collégialement. Chaque ASBL PO est régie par ses propres statuts publiés au Moniteur. Ces documents, approuvés par l’AG, décrivent la composition du PO, le rôle et les règles de fonctionnement de l'ASBL. Le CA, tout en étant un organe collégial, a désigné en son sein un président, un secrétaire et un trésorier.
+                            Le PO travaille en collaboration étroite avec la direction de l’école. Cette collaboration est définie dans la "lettre de mission du directeur"
+                            Le pacte scolaire précise que « le Pouvoir organisateur d’un établissement d’enseignement est l’autorité, la ou les personne(s) physique(s) ou morale(s) qui en assume(nt) la responsabilité ». Le décret « Missions » (adopté par le Parlement de la Fédération Wallonie-Bruxelles) précise, quant à lui, le rôle des PO en les instituant responsables des projets éducatif et pédagogique.
+                            Le PO du Collège du Biéreau se réunit en moyenne une fois par mois.
+                        </p>
+                        <p class="text-left">
+                            Outre les administrateurs, sont invités à participer à la plupart des réunions :
+                            <ul>
+                                <li>le directeur de l’école,</li>
+                                <li>les délégués représentant le personnel enseignant,</li>
+                                <li>les représentants des structures de participation des parents (Comité des fêtes, Association de parents et Conseil de participation)</li>
+                                <li>Dans les faits, le PO est l’organe responsable du fonctionnement de l’école. Il assure les fonctions de vigilance, de contrôle et de prévision.</li>
+                            </ul>
+                        </p>
+                        <p class="text-left">
+                            Assumer la responsabilité d’un établissement d’enseignement c’est donc :
+                            <ul>
+                                <li>être garant de sa bonne gestion dans tous les domaines: pédagogie, finances, administration, gestion du personnel, infrastructures et patrimoine, sécurité et bien-être;</li>
+                                <li>garantir les bonnes relations avec tous les partenaires proches et veiller à positionner l’école dans son environnement;</li>
+                                <li>avoir une vision de l’avenir et en tenir compte dans tous les domaines de la gestion.</li>
+                            </ul>
+                        </p>
+                        <p class="text-left">
+                            Le PO a un devoir d’écoute et d’information à l’égard de ses interlocuteurs:
+                            <ul>
+                                <li>il propose un cadre de vie aux enfants leur permettant un épanouissement global et une formation de qualité, tant par le biais d’une recherche pédagogique que par la mise à disposition d’une infrastructure et un matériel adaptés,</li>
+                                <li>il soutient la direction dans la gestion quotidienne et veille à la bonne réalisation du mandat qui lui a été confié.</li>
+                                <li>à plus long terme, il est soucieux de promouvoir une formation de qualité, fixe les lignes stratégiques au niveau pédagogique, administratif et financier, veille au développement d’un esprit de dialogue et de concertation au sein de l’école afin de gérer au mieux les situations conflictuelles si elles doivent survenir, stimule la réflexion au sein de l’école, n’opère des sanctions que si les circonstances l’exigent.</li>
+                        </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
+          
         </div>
-        </div>
+        <div class="row mt-5">
 
-        <div class="col-lg-4 col-md-6 mb-5">
-        <div class="post-entry-1 h-100 person-1 green">
-            
-            <img src="images/person_4.jpg" alt="Image"
-                class="img-fluid">
-        
-            <div class="post-entry-1-contents">
-            <span class="meta">Founder</span>
-            <h2>James Doe</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+          <div class="col-lg-4 mb-5">
+            <div class="package text-center bg-white">
+              <span class="img-wrap"><img src="{{ asset('build/team.png') }}" alt="L'équipe" class="img-fluid"></span>
+              <h3 class="text-teal">L'équipe enseignante</h3>
+              <p><button type="button" class="btn btn-success btn-custom-1 mt-4" data-toggle="modal" data-target="#team">Détails</button></p>
+
+                <!-- Modal -->
+                <div class="modal fade" id="team" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-teal" id="exampleModalLabel">L'équipe enseignante</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-left">
+                    <p>
+                        L'équipe enseignante est composée d'une quarantaine d'enseignants, dans les fonctions d'instituteurs/trices maternels et primaires, de maîtres spéciaux d'éducation physique, de seconde langue et de religion catholique, d'une psychomotricienne, et d'une puéricultrice.
+                    </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
             </div>
-        </div>
-        </div>
+          </div>
+          <div class="col-lg-4 mb-5">
+            <div class="package text-center bg-white">
+              <span class="img-wrap"><img src="{{ asset('build/friendship.png') }}" alt="Personnel d'encadrement" class="img-fluid"></span>
+              <h3 class="text-success">Le personnel d'encadrement</h3>
+              <p><button type="button" class="btn btn-primary btn-custom-1 mt-4" data-toggle="modal" data-target="#auxiliaire">Détails</button></p>
 
-        <div class="col-lg-4 col-md-6 mb-5">
-        <div class="post-entry-1 h-100 person-1 blue">
-            
-            <img src="images/person_5.jpg" alt="Image"
-                class="img-fluid">
-        
-            <div class="post-entry-1-contents">
-            <span class="meta">Founder</span>
-            <h2>James Doe</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+              <!-- Modal -->
+                <div class="modal fade" id="auxiliaire" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-teal" id="exampleModalLabel">Le personnel auxiliaire et d'encadrement</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-left">
+                        <p class="text-left">
+                        <ul>
+                            <li>Le C.A.P.E : Centre d’Accueil Pour l’Enfant: des animatrices assurent l’accueil des enfants, la gestion des horaires des accueillantes « ALE » et l’organisation des surveillances des récréations, des temps de midi, des garderies avant et après l’école et de certains temps d’aide aux institutrices maternelles.(http://www.cape-asbl.be)</li><br>
+                            <li>Les ALE: recrutés sous statut ALE, via les contrats avec les agences locales pour l’emploi de la région, des agentes ou agents assurent l’encadrement et les surveillances sous la supervision du CAPE.</li><br>
+                            <li>Des jobistes, en général étudiants universitaires, viennent renforcer l'équipe à certains moments de l'année pour les surveillances et les garderies.</li>
+                        </ul>
+                    </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
-        </div>
+          </div>
+          <div class="col-lg-4 mb-5">
+            <div class="package text-center bg-white">
+              <span class="img-wrap"><img src="{{ asset('build/forest.png') }}" alt="cadre-vie" class="img-fluid"></span>
+              <h3 class="text-danger">Le cadre de vie</h3>
+              <p><button type="button" class="btn btn-warning btn-custom-1 mt-4" data-toggle="modal" data-target="#cadre-vie">Détails</button></p>
 
-        <div class="col-lg-4 col-md-6 mb-5">
-        <div class="post-entry-1 h-100 person-1 red">
-            
-            <img src="images/person_1.jpg" alt="Image"
-                class="img-fluid">
-        
-            <div class="post-entry-1-contents">
-            <span class="meta">Founder</span>
-            <h2>James Doe</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+              <!-- Modal -->
+                <div class="modal fade" id="cadre-vie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-teal" id="exampleModalLabel">Le cadre de vie : les deux bâtiments de l'école</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-left">
+                        <p>
+                            Le Collège du Biéreau est hébergé dans deux bâtiments distincts, l’un destiné à l’école primaire, l’autre à l’école maternelle. Ce dernier bâtiment comprend également la salle de gymnastique, la salle de psychomotricité, les locaux administratifs (secrétariat, direction et salle des professeurs).
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
+          </div>
+          
         </div>
 
+              <div class="row mt-5">
 
+          <div class="col-lg-6 mb-5">
+            <div class="package text-center bg-white">
+              <span class="img-wrap"><img src="{{ asset('build/back-to-school.png') }}" alt="Le bâtiment primaire" class="img-fluid"></span>
+              <h3 class="text-teal">Le bâtiment primaire</h3>
+              <p><button type="button" class="btn btn-warning btn-custom-1 mt-4" data-toggle="modal" data-target="#primaires">Détails</button></p>
+
+                <!-- Modal -->
+                <div class="modal fade" id="primaires" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-teal" id="exampleModalLabel">Le bâtiment primaire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-left">
+                    <img src="{{ asset('build/batiment-primaire.jpg') }}" alt="Bâtiment primaire">
+                    <p>
+                        L'école primaire du Collège du Biéreau a été construite pour la première rentrée de 1972, au tout début de l'implantation de l'Université catholique de Louvain sur le site de Louvain-la-Neuve. Elle était dès lors la première école fondamentale libre implantée sur le site.<p>
+                    <p>
+                        Le Collège du Biéreau est né du transfert des écoles francophones dépendant de l’Institut du SacréCœur d’Herverlee (Religieuses Annonciades). Si les lois linguistiques de 1963 avaient imposé le principe de l’unilinguisme néerlandophone dans l’enseignement en Flandre, une exception avait été prévue à Leuven, où le maintien d’une école « d’application » de la section francophone de l’Université (formation des étudiants d’agrégation) devait permettre au personnel francophone de l’Université de continuer à recevoir un enseignement sur place. C’est ainsi que naquit le Lycée Virgo Sapiens, installé sur le domaine des Religieuses Annonciades d’Heverlee.
+                    </p>
+                    <p>
+                        En 1968, le Lycée Virgo Sapiens, qui comportait un enseignement fondamental et un enseignement secondaire, allait connaître le même sort que l’Université : le transfert. Le déménagement amena à la création de deux institutions : le Collège du Biéreau (enseignement fondamental) et le Lycée Martin V (enseignement secondaire).
+                        Si, à l'origine, ces deux établissements étaient unis, et dirigés par un même Pouvoir organisateur (l'UCL), le Collège du Biéreau est aujourd'hui dirigé par un Conseil d'Administration (Pouvoir organisateur) distinct et indépendant.
+                        Très vite le bâtiment initial (bâtiment "primaires" d'aujourd'hui) s'avère trop exigeant et l'ASBL décide de construire sur ses propres fonds le bâtiment destiné en maternelles.
+                    </p>
+                    <p>
+                        Fin des années 1970, un mouvement se crée au sein du Collège du Biéreau; d'une part le Collège atteint très vite le nombre d'élèves pour lequel la taille du bâtiment a été prévue. D'autre part, philosophiquement, des membres du PO de l'époque proposent de lancer une autre école basée sur un pédagogie "moins traditionnelle", très vite, une "extension" du Collège du Biéreau est lancée : ce sera l'école des Bruyères basée sur la pédagogie Freinet.
+                        En 2012, de gros travaux de rénovation du bâtiment primaire ont été réalisés, avec l'aide financière de l'UCL et de la Région wallonne.
+                    </p>
+                    <p>
+                        Ces travaux ont fait partie d'un programme UREBA subsidié en partie par la Région wallonne. Plusieurs améliorations ont ainsi été réalisées: remplacement de tous les châssis, relighting (remplacement de tous les néons et éclairages par un système plus performant de nouvelle génération), placement de vannes thermostatiques, remplacement des grandes portes d'entrée par des systèmes métalliques, isolation thermique de la toiture du préau.
+                        Le Pouvoir organisateur a profité de ces travaux pour réaliser d'autres aménagements, rénovations et embellissements dans la cour de récréation de l'école primaire.
+                    </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+          </div>
+          <div class="col-lg-6 mb-5">
+            <div class="package text-center bg-white">
+              <span class="img-wrap"><img src="{{ asset('build/green-home.png') }}" alt="Bâtiment maternel" class="img-fluid"></span>
+              <h3 class="text-success">Le bâtiment maternel</h3>
+              <p><button type="button" class="btn btn-primary btn-custom-1 mt-4" data-toggle="modal" data-target="#maternel">Détails</button></p>
+
+              <!-- Modal -->
+                <div class="modal fade" id="maternel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-teal" id="exampleModalLabel">Le bâtiment maternel</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-left">
+                    <img src="{{ asset('build/batiment-maternel.jpg') }}" alt="Bâtiment maternel">
+                        <p class="text-left">
+                            Le bâtiment autonome de l’école maternelle a été initialement construit en 1976 par le Pouvoir organisateur. Ce bâtiment, souffrant d’énormes problèmes structurels et techniques a été déclaré insalubre dans les années 2000, nécessitant dès lors de lourds travaux de réfection… ou une reconstruction complète. C’est cette deuxième option qui a été retenue par le Pouvoir organisateur de l’école.
+                        </p>
+                        <p>
+                            Dès l’idée de cette nouvelle construction, le Conseil d’Administration de l’école s’est tourné vers la réflexion autour d’un bâtiment passif. En effet, pour le Pouvoir organisateur, la direction et le corps enseignant du Collège du Biéreau à Louvain-la-Neuve, le développement durable ne constitue pas une mode passagère mais bien une volonté citoyenne d’y contribuer dans un projet ambitieux et concret, et d’intégrer la notion au niveau de l’enseignement.
+                            Baptisé METIS (pour Maîtrise Energétique et Technologique d’une Institution Scolaire), le projet de départ a croisé des enjeux économiques, écologiques et pédagogiques. Développé par une école où se côtoient de nombreuses nationalités, METIS est originellement le nom de la déesse grecque de la raison, de la sagesse, de l’ingéniosité et de l’intelligence pratique.
+                            Tout un programme qui fait se rencontrer école et écologie, enfants et adultes.
+                        </p>
+                        <p>
+                            La nouvelle construction abrite entre 140 et 170 enfants de 2,5 à 6 ans répartis dans 7 locaux de classes; en outre, des zones accessibles aux élèves du niveau primaire, aux parents, aux professeurs et à la direction sont intégrées: locaux administratifs (secrétariat et bureau de la direction), salle des professeurs, réfectoire, salle de psychomotricité, salle d’éducation physique et un appartement, le tout distribué sur plus de 1.500 m².
+                            Cette nouvelle construction de l’école maternelle est donc conçue selon les normes du standard passif. Avec ce nouveau bâtiment, le Collège du Biéreau s’inscrit dans les enjeux de son époque.
+                            Ce choix du passif, rationnel et économique, se veut aussi un engagement citoyen. Il offre aux enfants et à la Communauté éducative un lieu d’accueil et d’enseignement confortable. Mais il leur permet surtout de vivre, au quotidien, dans un milieu porteur de solutions pour les défis économiques et écologiques du futur.
+                        </p>
+                        <p>
+                            METIS rencontre des objectifs:
+                            <ul>
+                                <li>Economiques: réaliser des économies à moyen terme,</li>
+                                <li>Ecologiques: respecter l’environnement,</li>
+                                <li>Energétiques: réduire drastiquement la consommation d'énergie et particulièrement le chauffage,</li>
+                                <li>Educatifs: sensibiliser les adultes et rendre attentifs les enfants dès le plus jeune âge aux aspects écologiques et énergétiques. Inciter ces derniers à jouer le relais vers les adultes par la création de réflexes adéquats.</li>
+                            </ul>
+                        </p>
+                        <p>
+                            Mais au-delà de ces quatre «E», un cinquième s’est glissé dans le projet : un objectif « Exemplatif ». En effet, le Pouvoir organisateur a toujours souhaité que cette construction puisse servir l'inspiration aux promoteurs d’autres écoles et bâtiments collectifs. Son caractère exemplatif fait partie intégrante du projet.
+                            Comme le reprend un des slogans de l’école ; « METIS, un projet « passif » pour des enfants actifs ».
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-custom-1 mt-4" data-dismiss="modal">Fermer</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
     </div>
-    </div>
-</div>
 
 
-<div class="site-section bg-info">
-    <div class="container">
-    <div class="row mb-5">
-        <div class="col-12 text-center">
-        <span class="text-cursive h5 text-red d-block">Packages You Like</span>
-        <h2 class="text-white">Our Packages</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">
-        <div class="package text-center bg-white">
-            <span class="img-wrap"><img src="images/flaticon/svg/001-jigsaw.svg" alt="Image" class="img-fluid"></span>
-            <h3 class="text-teal">Indoor Games</h3>
-            <p>Lorem ipsum dolor sit amet. Consequatur aliquam, fuga maiores amet quo corporis distinctio soluta recusandae?</p>
-            <p><a href="#" class="btn btn-primary btn-custom-1 mt-4">Learn More</a></p>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="package text-center bg-white">
-            <span class="img-wrap"><img src="images/flaticon/svg/002-target.svg" alt="Image" class="img-fluid"></span>
-            <h3 class="text-success">Outdoor Game and Event</h3>
-            <p>Lorem ipsum dolor sit amet. Consequatur aliquam, fuga maiores amet quo corporis distinctio soluta recusandae?</p>
-            <p><a href="#" class="btn btn-warning btn-custom-1 mt-4">Learn More</a></p>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="package text-center bg-white">
-            <span class="img-wrap"><img src="images/flaticon/svg/003-mission.svg" alt="Image" class="img-fluid"></span>
-            <h3 class="text-danger">Camping for Kids</h3>
-            <p>Lorem ipsum dolor sit amet. Consequatur aliquam, fuga maiores amet quo corporis distinctio soluta recusandae?</p>
-            <p><a href="#" class="btn btn-success btn-custom-1 mt-4">Learn More</a></p>
-        </div>
-        </div>
-    </div>
-    </div>
-</div>
 {% endblock %}
 
 

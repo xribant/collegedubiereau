@@ -302,6 +302,13 @@ h1, h2, h3, h4, h5,
   .site-section.site-section-sm {
     padding: 4em 0; }
 
+  @media (max-width: 768px) 
+  {
+    .site-section .img-fluid {
+      margin-bottom: 2rem; 
+    }
+  }
+
 .site-footer {
   padding: 4em 0;
   background: #343a40; }
@@ -1881,6 +1888,12 @@ h1, h2, h3, h4, h5,
     width: 80px; }
     .package .img-wrap img {
       width: 80px; }
+
+.package .modal-body img {
+  float: left;
+  max-width: 300px;
+  padding: 5px 1rem 5px 0;
+}
 
 .testimonial-3-wrap {
   background: #fd4d40;
