@@ -121,6 +121,29 @@
 				                            <span>Utilisateurs</span>
 				                        </a>                        
 				                    </li>
+									<li class="nav-parent {% if active_menu == 'menu' %}nav-expanded nav-active{% endif %}">
+				                        <a class="nav-link" href="#">
+				                            <i class="bx bx-layout" aria-hidden="true"></i>
+				                            <span>Contenu</span>
+				                        </a>
+				                        <ul class="nav nav-children">
+				                            <li {% if active_menu == 'menu' %}class="nav-active"{% endif %}>
+				                                <a class="nav-link" href="{{ path('app_menu_index') }}">
+				                                    Menus
+				                                </a>
+				                            </li>
+				                            <li>
+				                                <a class="nav-link" href="#">
+				                                    Pages
+				                                </a>
+				                            </li>
+				                            <li>
+				                                <a class="nav-link" href="#">
+				                                    Articles
+				                                </a>
+				                            </li>
+				                        </ul>
+				                    </li>
 
 				                </ul>
 				            </nav>

@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\StandardPageRepository;
+use App\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use DateTime;
 
-#[ORM\Entity(repositoryClass: StandardPageRepository::class)]
-class StandardPage
+#[ORM\Entity(repositoryClass: ArticleRepository::class)]
+class Article
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,7 +20,11 @@ class StandardPage
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    #[Gedmo\Slug(fields: ["title"])]
     private ?string $slug = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $uid = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created_at = null;
@@ -26,11 +32,12 @@ class StandardPage
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $updated_at = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $path = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $backgroundImage = null;
+    public function __construct()
+    {
+        $this->uid = uniqid();
+        $this->created_at = new DateTime();
+        $this->updated_at = new DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -61,6 +68,18 @@ class StandardPage
         return $this;
     }
 
+    public function getUid(): ?string
+    {
+        return $this->uid;
+    }
+
+    public function setUid(string $uid): static
+    {
+        $this->uid = $uid;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
@@ -81,30 +100,6 @@ class StandardPage
     public function setUpdatedAt(\DateTimeInterface $updated_at): static
     {
         $this->updated_at = $updated_at;
-
-        return $this;
-    }
-
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    public function setPath(string $path): static
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    public function getBackgroundImage(): ?string
-    {
-        return $this->backgroundImage;
-    }
-
-    public function setBackgroundImage(?string $backgroundImage): static
-    {
-        $this->backgroundImage = $backgroundImage;
 
         return $this;
     }

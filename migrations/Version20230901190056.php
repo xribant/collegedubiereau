@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230826205921 extends AbstractMigration
+final class Version20230901190056 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,13 @@ final class Version20230826205921 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE standard_page ADD background_image VARCHAR(255) DEFAULT NULL, ADD menu_link VARCHAR(255) NOT NULL, ADD main_menu_link VARCHAR(255) DEFAULT NULL');
+        $this->addSql('SET @current = -1');
+        $this->addSql('UPDATE menu SET position = (@current := @current + 1)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE standard_page DROP background_image, DROP menu_link, DROP main_menu_link');
+        $this->addSql('ALTER TABLE menu DROP position');
     }
 }

@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\MenuEntryRepository;
+use App\Repository\MenuRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
+use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ORM\Entity(repositoryClass: MenuEntryRepository::class)]
-class MenuEntry
+#[ORM\Entity(repositoryClass: MenuRepository::class)]
+class Menu
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,8 +18,9 @@ class MenuEntry
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $title = null;
 
+    #[Gedmo\Slug(fields: ["title"])]
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
@@ -29,21 +30,16 @@ class MenuEntry
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $updated_at = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'menuEntries')]
-    private ?self $parent_menu = null;
+    #[ORM\OneToMany(mappedBy: 'parent_menu', targetEntity: SubMenu::class)]
+    private Collection $subMenus;
 
-    #[ORM\OneToMany(mappedBy: 'parent_menu', targetEntity: self::class)]
-    private Collection $menuEntries;
-
-    #[ORM\Column(length: 255)]
-    private ?string $uid = null;
+    #[Gedmo\SortablePosition]
+    #[ORM\Column]
+    private ?int $position = 0;
 
     public function __construct()
     {
-        $this->created_at = new DateTime();
-        $this->updated_at = new DateTime();
-        $this->uid = uniqid();
-        $this->menuEntries = new ArrayCollection();
+        $this->subMenus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,14 +47,14 @@ class MenuEntry
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): static
+    public function setTitle(string $title): static
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
@@ -99,56 +95,44 @@ class MenuEntry
         return $this;
     }
 
-    public function getParentMenu(): ?self
-    {
-        return $this->parent_menu;
-    }
-
-    public function setParentMenu(?self $parent_menu): static
-    {
-        $this->parent_menu = $parent_menu;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, self>
+     * @return Collection<int, SubMenu>
      */
-    public function getMenuEntries(): Collection
+    public function getSubMenus(): Collection
     {
-        return $this->menuEntries;
+        return $this->subMenus;
     }
 
-    public function addMenuEntry(self $menuEntry): static
+    public function addSubMenu(SubMenu $subMenu): static
     {
-        if (!$this->menuEntries->contains($menuEntry)) {
-            $this->menuEntries->add($menuEntry);
-            $menuEntry->setParentMenu($this);
+        if (!$this->subMenus->contains($subMenu)) {
+            $this->subMenus->add($subMenu);
+            $subMenu->setParentMenu($this);
         }
 
         return $this;
     }
 
-    public function removeMenuEntry(self $menuEntry): static
+    public function removeSubMenu(SubMenu $subMenu): static
     {
-        if ($this->menuEntries->removeElement($menuEntry)) {
+        if ($this->subMenus->removeElement($subMenu)) {
             // set the owning side to null (unless already changed)
-            if ($menuEntry->getParentMenu() === $this) {
-                $menuEntry->setParentMenu(null);
+            if ($subMenu->getParentMenu() === $this) {
+                $subMenu->setParentMenu(null);
             }
         }
 
         return $this;
     }
 
-    public function getUid(): ?string
+    public function getPosition(): ?int
     {
-        return $this->uid;
+        return $this->position;
     }
 
-    public function setUid(string $uid): static
+    public function setPosition(int $position): static
     {
-        $this->uid = $uid;
+        $this->position = $position;
 
         return $this;
     }

@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\StandardPage;
+use App\Entity\Section;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<StandardPage>
+ * @extends ServiceEntityRepository<Section>
  *
- * @method StandardPage|null find($id, $lockMode = null, $lockVersion = null)
- * @method StandardPage|null findOneBy(array $criteria, array $orderBy = null)
- * @method StandardPage[]    findAll()
- * @method StandardPage[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Section|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Section|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Section[]    findAll()
+ * @method Section[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class StandardPageRepository extends ServiceEntityRepository
+class SectionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, StandardPage::class);
+        parent::__construct($registry, Section::class);
     }
 
 //    /**
-//     * @return StandardPage[] Returns an array of StandardPage objects
+//     * @return Section[] Returns an array of Section objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class StandardPageRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?StandardPage
+//    public function findOneBySomeField($value): ?Section
 //    {
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')
