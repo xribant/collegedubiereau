@@ -68,6 +68,12 @@
             "config/packages/fos_ckeditor.yaml"
         ]
     },
+<<<<<<< HEAD
+=======
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.2.0"
+    },
+>>>>>>> easyadmin
     "php-flasher/flasher-symfony": {
         "version": "v1.15.3"
     },

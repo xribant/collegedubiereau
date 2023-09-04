@@ -2,14 +2,24 @@
 
 namespace App\Entity;
 
+<<<<<<<< HEAD:src/Entity/Article.php
 use App\Repository\ArticleRepository;
+========
+use App\Repository\MenuRepository;
+use DateTime;
+>>>>>>>> easyadmin:src/Entity/Menu.php
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use DateTime;
 
+<<<<<<<< HEAD:src/Entity/Article.php
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
+========
+#[ORM\Entity(repositoryClass: MenuRepository::class)]
+class Menu
+>>>>>>>> easyadmin:src/Entity/Menu.php
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,14 +27,19 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     #[Gedmo\Slug(fields: ["title"])]
     private ?string $slug = null;
 
+<<<<<<<< HEAD:src/Entity/Article.php
     #[ORM\Column(length: 255)]
     private ?string $uid = null;
+========
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $route = null;
+>>>>>>>> easyadmin:src/Entity/Menu.php
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created_at = null;
@@ -34,7 +49,10 @@ class Article
 
     public function __construct()
     {
+<<<<<<<< HEAD:src/Entity/Article.php
         $this->uid = uniqid();
+========
+>>>>>>>> easyadmin:src/Entity/Menu.php
         $this->created_at = new DateTime();
         $this->updated_at = new DateTime();
     }
@@ -44,14 +62,14 @@ class Article
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): static
+    public function setName(string $name): static
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
@@ -68,6 +86,7 @@ class Article
         return $this;
     }
 
+<<<<<<<< HEAD:src/Entity/Article.php
     public function getUid(): ?string
     {
         return $this->uid;
@@ -76,6 +95,16 @@ class Article
     public function setUid(string $uid): static
     {
         $this->uid = $uid;
+========
+    public function getRoute(): ?string
+    {
+        return $this->route;
+    }
+
+    public function setRoute(?string $route): static
+    {
+        $this->route = $route;
+>>>>>>>> easyadmin:src/Entity/Menu.php
 
         return $this;
     }
