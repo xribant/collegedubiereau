@@ -4,6 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Entity\Menu;
+use App\Entity\SubMenu;
+use App\Entity\Page;
+use App\Entity\Article;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -33,14 +39,13 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        return [
-            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::section('Configuration'),
-            MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class),
-
-            MenuItem::section('Contenu'),
-            MenuItem::linkToCrud('Menus', 'fas fa-bar', Menu::class),
-        ];
-     
+        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
+        yield MenuItem::linkToCrud('Menus', 'fa-solid fa-bars', Menu::class);
+        yield MenuItem::subMenu('Pages', 'fa-regular fa-file-lines')->setSubItems([
+            MenuItem::linkToCrud('Pages', 'fa fa-tags', Page::class)
+                ->setAction('edit'),
+        ]);
     }
+
+    
 }
