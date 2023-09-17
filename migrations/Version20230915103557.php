@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230913111402 extends AbstractMigration
+final class Version20230915103557 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,14 +20,12 @@ final class Version20230913111402 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE sub_menu DROP FOREIGN KEY FK_5A93A552BE9F9D54');
-        $this->addSql('ALTER TABLE sub_menu ADD CONSTRAINT FK_5A93A552BE9F9D54 FOREIGN KEY (parent_menu_id) REFERENCES menu (id) ON DELETE CASCADE');
+        $this->addSql('CREATE TABLE home_page_key_value (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text LONGTEXT NOT NULL, background_color VARCHAR(255) NOT NULL, icon VARCHAR(255) DEFAULT NULL, created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE sub_menu DROP FOREIGN KEY FK_5A93A552BE9F9D54');
-        $this->addSql('ALTER TABLE sub_menu ADD CONSTRAINT FK_5A93A552BE9F9D54 FOREIGN KEY (parent_menu_id) REFERENCES menu (id) ON UPDATE NO ACTION ON DELETE NO ACTION');
+        $this->addSql('DROP TABLE home_page_key_value');
     }
 }

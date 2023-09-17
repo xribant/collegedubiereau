@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Controller\Admin;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 use App\Entity\SubMenu;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 
 class SubMenuCrudController extends AbstractCrudController
 {
@@ -18,35 +16,34 @@ class SubMenuCrudController extends AbstractCrudController
         return SubMenu::class;
     }
 
+    public function createEntity(string $entityFqcn)
+    {
+        $menu = new SubMenu();
+        $menu->setLastModifiedBy($this->getUser()->getFullName());
+
+        return $menu;
+    }
+
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
             ->setEntityLabelInSingular('Sous-Menu')
             ->setEntityLabelInPlural('Sous-Menus')
-            ->setPageTitle('index', 'Gestion des sous-menus')
-            ->setDefaultSort(['position' => 'ASC'])
-            ->showEntityActionsInlined();
+            ->showEntityActionsInlined()
         ;
     }
+
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            TextField::new('name', 'Nom'),
-            AssociationField::new('parent_menu','Menu Principal')
-                ->onlyOnIndex()
-                ->setCrudController(MenuCrudController::class),
-            AssociationField::new('page','Page')
-                ->setCrudController(PageCrudController::class),
-            DateTimeField::new('created_at','Date de création')->hideOnForm(),
-            DateTimeField::new('updated_at', 'Dernière modification')->hideOnForm(),
-        ];
+        yield TextField::new('name', 'Nom du sous-menu');
+        yield AssociationField::new('parent_menu', 'Menu parent');
+        yield DateField::new('created_at', 'Date de création')
+            ->onlyOnIndex();
+        yield DateField::new('updated_at', 'Dernière modification')
+            ->onlyOnIndex();
+        yield TextField::new('last_modified_by', 'Modifié par')
+            ->onlyOnIndex();
     }
 
-    public function configureFilters(Filters $filters): Filters
-    {
-        return $filters
-            ->add(EntityFilter::new('parent_menu', 'Menu Principal'))
-        ;
-    }
 }

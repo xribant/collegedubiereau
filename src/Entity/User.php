@@ -244,6 +244,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
         return $this;
     }
 
+    public function getFullName(): ?string {
+        if ($this->firstName && $this->lastName) {
+            return $this->firstName . ' ' . $this->lastName;
+        }
+    
+        return $this->username;
+    }
+
     public function serialize()
     {
         return serialize(array(

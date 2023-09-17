@@ -3,9 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SubMenuRepository;
-use Doctrine\DBAL\Types\Types;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: SubMenuRepository::class)]
@@ -23,31 +22,28 @@ class SubMenu
     #[Gedmo\Slug(fields: ['name'])]
     private ?string $slug = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $updated_at = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column]
-    #[Gedmo\SortablePosition]
-    private ?int $position = null;
+    private ?\DateTimeImmutable $updated_at = null;
 
-    #[ORM\OneToOne(mappedBy: 'parent_sub_menu', cascade: ['persist', 'remove'])]
-    private ?Page $page = null;
+    #[ORM\Column(length: 255)]
+    private ?string $last_modified_by = null;
 
-    #[ORM\ManyToOne(inversedBy: 'subMenus', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Menu $parent_menu = null;
-
-    public function __toString(){
-        return $this->getName();
-    }
+    #[ORM\ManyToOne(inversedBy: 'subMenus')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?MainMenu $parent_menu = null;
 
     public function __construct()
     {
-        $this->created_at = new DateTime();
-        $this->updated_at = new DateTime();
+        $this->created_at = new DateTimeImmutable();
+        $this->updated_at = new DateTimeImmutable();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     public function getId(): ?int
@@ -79,70 +75,48 @@ class SubMenu
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): static
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updated_at): static
+    public function setUpdatedAt(\DateTimeImmutable $updated_at): static
     {
         $this->updated_at = $updated_at;
 
         return $this;
     }
 
-    public function getPosition(): ?int
+    public function getLastModifiedBy(): ?string
     {
-        return $this->position;
+        return $this->last_modified_by;
     }
 
-    public function setPosition(int $position): static
+    public function setLastModifiedBy(string $last_modified_by): static
     {
-        $this->position = $position;
+        $this->last_modified_by = $last_modified_by;
 
         return $this;
     }
 
-    public function getPage(): ?Page
-    {
-        return $this->page;
-    }
-
-    public function setPage(?Page $page): static
-    {
-        // unset the owning side of the relation if necessary
-        if ($page === null && $this->page !== null) {
-            $this->page->setParentSubMenu(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($page !== null && $page->getParentSubMenu() !== $this) {
-            $page->setParentSubMenu($this);
-        }
-
-        $this->page = $page;
-
-        return $this;
-    }
-
-    public function getParentMenu(): ?Menu
+    public function getParentMenu(): ?MainMenu
     {
         return $this->parent_menu;
     }
 
-    public function setParentMenu(?Menu $parent_menu): static
+    public function setParentMenu(?MainMenu $parent_menu): static
     {
         $this->parent_menu = $parent_menu;
 

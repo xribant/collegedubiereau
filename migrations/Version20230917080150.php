@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230913111549 extends AbstractMigration
+final class Version20230917080150 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,14 +20,12 @@ final class Version20230913111549 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE sub_menu DROP FOREIGN KEY FK_5A93A552BE9F9D54');
-        $this->addSql('ALTER TABLE sub_menu ADD CONSTRAINT FK_5A93A552BE9F9D54 FOREIGN KEY (parent_menu_id) REFERENCES menu (id)');
+        $this->addSql('ALTER TABLE main_menu ADD position INT NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE sub_menu DROP FOREIGN KEY FK_5A93A552BE9F9D54');
-        $this->addSql('ALTER TABLE sub_menu ADD CONSTRAINT FK_5A93A552BE9F9D54 FOREIGN KEY (parent_menu_id) REFERENCES menu (id) ON UPDATE NO ACTION ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE main_menu DROP position');
     }
 }

@@ -2,14 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
-use App\Entity\Menu;
+use App\Entity\MainMenu;
 use App\Entity\SubMenu;
-use App\Entity\Page;
-use App\Entity\Article;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -40,12 +35,10 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
-        yield MenuItem::linkToCrud('Menus', 'fa-solid fa-bars', Menu::class);
-        yield MenuItem::subMenu('Pages', 'fa-regular fa-file-lines')->setSubItems([
-            MenuItem::linkToCrud('Pages', 'fa fa-tags', Page::class)
-                ->setAction('edit'),
-        ]);
+        yield MenuItem::section('Configuration');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
+        yield MenuItem::section('Contenu');
+        yield MenuItem::linkToCrud('Menus principaux', 'fa-solid fa-bars', MainMenu::class);
+        yield MenuItem::linkToCrud('Sous-Menus', 'fa-solid fa-folder-tree', SubMenu::class);
     }
-
-    
 }

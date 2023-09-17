@@ -2,16 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\MenuRepository;
-use DateTime;
+use App\Repository\MainMenuRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ORM\Entity(repositoryClass: MenuRepository::class)]
-class Menu
+#[ORM\Entity(repositoryClass: MainMenuRepository::class)]
+class MainMenu
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -26,30 +25,31 @@ class Menu
     private ?string $slug = null;
 
     #[ORM\Column]
-    #[Gedmo\SortablePosition]
-    private ?int $position = null;
+    private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $created_at = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $updated_at = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $updated_at = null;
+    #[ORM\Column(length: 255)]
+    private ?string $last_modified_by = null;
 
-    #[ORM\OneToOne(mappedBy: 'parent_menu', cascade: ['persist', 'remove'])]
-    private ?Page $page = null;
-
-    #[ORM\OneToMany(mappedBy: 'parent_menu', targetEntity: SubMenu::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(mappedBy: 'parent_menu', targetEntity: SubMenu::class, cascade:['persist'])]
     private Collection $subMenus;
 
-    public function __toString(){
-        return $this->getName();
-    }
+    #[ORM\Column]
+    #[Gedmo\SortablePosition]
+    private int $position = 0;
 
     public function __construct()
     {
-        $this->created_at = new DateTime();
-        $this->updated_at = new DateTime();
+        $this->created_at = new DateTimeImmutable();
+        $this->updated_at = new DateTimeImmutable();
         $this->subMenus = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     public function getId(): ?int
@@ -81,60 +81,38 @@ class Menu
         return $this;
     }
 
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(int $position): static
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): static
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updated_at): static
+    public function setUpdatedAt(\DateTimeImmutable $updated_at): static
     {
         $this->updated_at = $updated_at;
 
         return $this;
     }
 
-    public function getPage(): ?Page
+    public function getLastModifiedBy(): ?string
     {
-        return $this->page;
+        return $this->last_modified_by;
     }
 
-    public function setPage(?Page $page): static
+    public function setLastModifiedBy(string $last_modified_by): static
     {
-        // unset the owning side of the relation if necessary
-        if ($page === null && $this->page !== null) {
-            $this->page->setParentMenu(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($page !== null && $page->getParentMenu() !== $this) {
-            $page->setParentMenu($this);
-        }
-
-        $this->page = $page;
+        $this->last_modified_by = $last_modified_by;
 
         return $this;
     }
@@ -165,6 +143,18 @@ class Menu
                 $subMenu->setParentMenu(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): static
+    {
+        $this->position = $position;
 
         return $this;
     }

@@ -1,0 +1,30 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Nouvel utilisateur
+{% endblock %}
+
+{% block pageTitle %}Créer un utilisateur
+{% endblock %}
+
+{% block content %}
+<!-- start: page -->
+<div class="row">
+	<div class="col-lg-6">
+		<section class="card">
+			<header class="card-header">
+				<div class="card-actions">
+					<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+					<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+				</div>
+
+				<h2 class="card-title">Nouvel utilisateur</h2>
+				<p class="card-subtitle">
+					Veuillez compléter les détails de l'utilisateur. Un mot de passe sera généré automatiquement et envoyé à l'adresse e-mail renseignée avec un lien permettant de réinitialiser celui-ci.
+				</p>
+			</header>
+			{{ include('admin/user/_form.html.twig') }}
+		</section>
+	</div>
+</div>
+{% endblock %}
+

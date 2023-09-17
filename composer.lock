@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8011cc450f5d2288384bfd3c8b3d2644",
+    "content-hash": "204cadf01d7c7cbb682f01bb704e98eb",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -102,7 +102,6 @@
                 "wiki": "https://ckeditor.com/docs/ckeditor4/latest/"
             },
             "time": "2023-06-30T13:35:30+00:00"
->>>>>>> easyadmin
         },
         {
             "name": "doctrine/annotations",
@@ -1496,29 +1495,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-<<<<<<< HEAD
-            "version": "v4.7.2",
+            "version": "v4.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "67039f70c5a305aa8dca1b5eac5a18f11f22d969"
+                "reference": "60e04377612ce4d63ad833209127541caaf7e93b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/67039f70c5a305aa8dca1b5eac5a18f11f22d969",
-                "reference": "67039f70c5a305aa8dca1b5eac5a18f11f22d969",
-=======
-            "version": "v4.7.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "aee6581572d88d36122f4f289dd634d1b4fc4d2b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/aee6581572d88d36122f4f289dd634d1b4fc4d2b",
-                "reference": "aee6581572d88d36122f4f289dd634d1b4fc4d2b",
->>>>>>> easyadmin
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/60e04377612ce4d63ad833209127541caaf7e93b",
+                "reference": "60e04377612ce4d63ad833209127541caaf7e93b",
                 "shasum": ""
             },
             "require": {
@@ -1591,11 +1577,7 @@
             ],
             "support": {
                 "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.7.2"
-=======
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.7.4"
->>>>>>> easyadmin
+                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.7.6"
             },
             "funding": [
                 {
@@ -1603,11 +1585,7 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2023-08-07T18:45:38+00:00"
-=======
-            "time": "2023-09-03T17:57:42+00:00"
->>>>>>> easyadmin
+            "time": "2023-09-07T06:13:39+00:00"
         },
         {
             "name": "egulias/email-validator",

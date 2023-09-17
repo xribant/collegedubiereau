@@ -1,0 +1,60 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Gestion des utilisateurs de l'admin{% endblock %}
+
+{% block pageTitle %}Utilisateurs{% endblock %}
+
+{% block content %}
+<!-- start: page -->
+<section class="card">
+    <header class="card-header">
+        <h2 class="card-title">Gestion des utilisateurs</h2>
+    </header>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <a href="{{ path('app_user_new') }}" class="btn btn-primary">Ajouter <i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped mb-0" id="datatable-editable">
+            <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date de création</th>
+                    <th>Date de modification</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td class="align-middle">{{ user.firstName }}</td>
+                    <td class="align-middle">{{ user.lastName}}</td>
+                    <td class="align-middle">{{ user.email }}</td>
+                    <td class="align-middle">{{ user.createdAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                    <td class="align-middle">{{ user.updatedAt|format_datetime('medium', 'medium',locale='fr') }}</td>
+                    <td class="align-middle">
+                        <a href="{{ path('app_user_edit', {'uid': user.uid}) }}" class="btn btn-sm btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a>
+                        <form style="display: inline-block;" method="post" action="{{ path('app_user_delete', {'uid': user.uid}) }}" onsubmit="return confirm('Etes-vous certain de vouloir supprimer cet utilisateur?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.uid) }}">
+							<button title="Supprimer" class="btn btn-sm btn-danger">
+							    <i class="far fa-trash-alt"></i>
+							</button>
+						</form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Pas d'utilisateur</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- end: page -->
+{% endblock %}
