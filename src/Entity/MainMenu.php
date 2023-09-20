@@ -40,11 +40,15 @@ class MainMenu
     #[Gedmo\SortablePosition]
     private int $position = 0;
 
+    #[ORM\OneToMany(mappedBy: 'parent_menu', targetEntity: Page::class)]
+    private Collection $pages;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
         $this->subMenus = new ArrayCollection();
+        $this->pages = new ArrayCollection();
     }
 
     public function __toString()
@@ -155,6 +159,36 @@ class MainMenu
     public function setPosition(int $position): static
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Page>
+     */
+    public function getPages(): Collection
+    {
+        return $this->pages;
+    }
+
+    public function addPage(Page $page): static
+    {
+        if (!$this->pages->contains($page)) {
+            $this->pages->add($page);
+            $page->setParentMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removePage(Page $page): static
+    {
+        if ($this->pages->removeElement($page)) {
+            // set the owning side to null (unless already changed)
+            if ($page->getParentMenu() === $this) {
+                $page->setParentMenu(null);
+            }
+        }
 
         return $this;
     }

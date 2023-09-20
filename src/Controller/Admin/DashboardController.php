@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\MainMenu;
+use App\Entity\Page;
 use App\Entity\SubMenu;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -40,5 +41,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Contenu');
         yield MenuItem::linkToCrud('Menus principaux', 'fa-solid fa-bars', MainMenu::class);
         yield MenuItem::linkToCrud('Sous-Menus', 'fa-solid fa-folder-tree', SubMenu::class);
+        yield MenuItem::linkToCrud('Pages', 'fa-solid fa-file-lines', Page::class);
     }
 }
