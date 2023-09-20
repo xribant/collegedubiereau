@@ -61,8 +61,8 @@ class MainMenuCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Menu principal')
-            ->setEntityLabelInPlural('Menus principaux')
+            ->setEntityLabelInSingular('Menu')
+            ->setEntityLabelInPlural('Menus')
             ->showEntityActionsInlined()
             ->setDefaultSort(['position' => 'ASC'])
         ;
