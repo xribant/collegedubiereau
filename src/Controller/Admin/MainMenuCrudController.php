@@ -100,7 +100,7 @@ class MainMenuCrudController extends AbstractCrudController
     {
     
         yield TextField::new('name', 'Nom du menu');
-        yield CollectionField::new('subMenus', 'Sous-Menus')
+        yield CollectionField::new('pages', 'Pages')
             ->onlyOnIndex();
         yield DateField::new('created_at', 'Date de création')
             ->onlyOnIndex();

@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\MainMenu;
 use App\Entity\Page;
-use App\Entity\SubMenu;
+use App\Entity\Article;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -41,5 +41,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Contenu');
         yield MenuItem::linkToCrud('Menus', 'fa-solid fa-bars', MainMenu::class);
         yield MenuItem::linkToCrud('Pages', 'fa-solid fa-file-lines', Page::class);
+        yield MenuItem::linkToCrud('Articles', 'fa-solid fa-file-lines', Article::class);
     }
 }

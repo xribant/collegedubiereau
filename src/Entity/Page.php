@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\PageRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -41,12 +43,21 @@ class Page
     #[ORM\JoinColumn(nullable: false)]
     private ?MainMenu $parent_menu = null;
 
+    #[ORM\OneToMany(mappedBy: 'parent_page', targetEntity: Article::class, orphanRemoval: true)]
+    private Collection $articles;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
         $this->published = true;
         $this->path = '/'.$this->slug;
+        $this->articles = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 
     public function getId(): ?int
@@ -146,6 +157,36 @@ class Page
     public function setParentMenu(?MainMenu $parent_menu): static
     {
         $this->parent_menu = $parent_menu;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): static
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles->add($article);
+            $article->setParentPage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): static
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getParentPage() === $this) {
+                $article->setParentPage(null);
+            }
+        }
 
         return $this;
     }

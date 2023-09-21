@@ -62,43 +62,34 @@
               <img src="{{ asset('build/logo-biereau.png') }}" alt="Logo Biéreau">
             </a>
 
-              <nav class="site-navigation text-left mr-auto d-none d-lg-block" role="navigation">
-                <ul class="site-menu main-menu js-clone-nav mr-auto ">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                      L'école
-                    </a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="{{ path('app_ecole_presentation') }}">Présentation</a>
-                      <a class="dropdown-item" href="#">Projet éducatif</a>
-                      <a class="dropdown-item" href="#">Plan de pilotage</a>
-                      <a class="dropdown-item" href="#">Règlement des études</a>
-                      <a class="dropdown-item" href="#">Règlement d'ordre intérieur</a>
-                      <a class="dropdown-item" href="#">"Vivre ensemble" de l'école primaire</a>
-                      <a class="dropdown-item" href="#">Charte Internet</a>
-                    </div>
-                  </li>
-                  <li><a href="#" class="nav-link">Infos pratiques</a></li>
-                  <li><a href="#" class="nav-link">L'équipe</a></li>
-                  <li><a href="#" class="nav-link">Agenda</a></li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                      Collaborations
-                    </a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Association des parents</a>
-                      <a class="dropdown-item" href="#">Comité des fêtes</a>
-                      <a class="dropdown-item" href="#">Conseil de participation</a>
-                      <a class="dropdown-item" href="#">PMS</a>
-                      <a class="dropdown-item" href="#">PSE</a>
-                      <a class="dropdown-item" href="#">UCL et Kots à projets</a>
-                      <a class="dropdown-item" href="#">SEGEC et FEDEFOC</a>
-                    </div>
-                  </li>
-                  <li><a href="#" class="nav-link">Parascolaire</a></li>
-                  
-                </ul>
-              </nav>
+            <nav class="site-navigation text-left mr-auto d-none d-lg-block" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto ">
+                {% for menuItem in menus.navigationMenu %}
+                  {% if menuItem.pages|length > 1 %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        {{ menuItem.name }}
+                      </a>
+                      <div class="dropdown-menu">
+                        {% for page in menuItem.pages %}
+                          <a class="dropdown-item {% if page.published == false %}disabled{% endif %}" href="{{ path('app_front_subpage', {'menu_slug': menuItem.slug, 'page_slug': page.slug }) }}">{{ page.title }}</a>
+                        {% endfor %}
+                      </div>
+                    </li>
+                  {% else %}
+                      <li>
+                        {% if menuItem.pages is not empty %}
+                          <a href="{{ path('app_front_mainpage', {'page_slug': menuItem.slug }) }}" class="nav-link">{{ menuItem.name }}</a>
+                        {% else %}
+                          <a href="#" class="nav-link">{{ menuItem.name }}</a>
+                        {% endif %}
+                      </li>
+                  {% endif %}
+                {% else %}
+                  <li><a href="#" class="nav-link">Error in Menu Items</a></li>
+                {% endfor %}
+              </ul>
+            </nav>
 
               <div class="top-social ml-auto">
                 <a href="https://www.facebook.com/apbiereau" target="_blank" title="Page Facebook de l'association des parents"><span class="icon-facebook text-teal"></span></a>

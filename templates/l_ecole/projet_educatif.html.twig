@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Presentation{% endblock %}
+
+{% block content %}
+<div class="ftco-blocks-cover-1">
+    <!-- data-stellar-background-ratio="0.5" style="background-image: url('images/hero_1.jpg')" -->
+    <div class="site-section-cover overlay" data-stellar-background-ratio="0.5" style="background-image: url('{{ asset('build/hero_1.jpg') }}')">
+    <div class="container">
+        <div class="row align-items-center ">
+
+        <div class="col-md-5 mt-5 pt-5">
+            <span class="text-cursive h5 text-red">Notre école</span>
+            <h1 class="mb-3 font-weight-bold text-teal">Projet éducatif et pédagogique</h1>
+            <p><a href="{{ path('app_home') }}" class="text-white">Accueil</a> <span class="mx-3">/</span> <strong>Projet éducatif et pédagogique</strong></p>
+        </div>
+        
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <img src="{{ asset('build/img_1.jpg') }}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-5 ml-auto pl-md-5">
+        <span class="text-cursive h5 text-red">Le Collège du Biéreau</span>
+        <h3 class="text-black">En quelques mots</h3>
+        <p>Faisant suite au "Walen Buiten" de 1967/1968 qui voit l'Université de Louvain se scinder en deux universités flamande (KUL) et francophone (UCL), l'école maternelle et primaire ouverte aux francophones à Leuven doit déménager. C'est ainsi qu'en 1972 est créé le Collège du Biéreau, la première école libre confessionnelle à s’ériger à Louvain-la-Neuve.
+        Aujourd’hui, l’école compte un peu plus de 430 enfants, répartis en trois classes d'accueil/première maternelle, puis en deux classes par année, de la première maternelle à la sixième primaire, soit 7 classes de maternelle et 12 classes de primaire. 
+        </p>
+        </div>
+    </div>
+    </div>
+</div>
+
+ <div class="site-section bg-info">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Collapsible Group Item #1
+                            </button>
+                        </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                        </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Collapsible Group Item #2
+                            </button>
+                        </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Some placeholder content for the second accordion panel. This panel is hidden by default.
+                        </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Collapsible Group Item #3
+                            </button>
+                        </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
