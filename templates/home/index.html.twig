@@ -4,18 +4,20 @@
 
 {% block content %}
 
-{% for newsItem in news %}
-<div class="banner" {% if newsItem.level == "primary" %}style="background: #49b8a6;"{% elseif newsItem.level == 'warning'%}style="background: #ffCC00;"{% elseif newsItem.level == 'danger'%}style="background: #ff0000;"{% endif %}>
+<div class="banner">
   <div class="banner__content">
     <div class="banner__text">
-      <strong>Information:</strong> {{ newsItem.text|raw }}
+      <div class="owl-carousel owl-theme">
+        {% for newsItem in news %}
+          <div class="item"><strong>Information:</strong> {{ newsItem.text|raw }}</div>
+        {% endfor %}
+      </div>
     </div>
     <button class="banner__close" type="button">
       <i class="fa fa-times" aria-hidden="true"></i>
     </button>
   </div>
 </div>
-{% endfor %}
 
  <div class="ftco-blocks-cover-1">
        
@@ -76,4 +78,20 @@
 
 {% endblock %}
 
-
+{% block javascripts %}
+<script>
+  $('.owl-carousel').owlCarousel({
+      loop:true,
+      margin:10,
+      nav:false,
+      items:1,
+      dots: false,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      autoplayTimeout: 10000,
+  })
+  $('.banner__close').addEventListener("click", function () {
+      this.closest(".banner").style.display = "none";
+  })
+</script>
+{% endblock %}
