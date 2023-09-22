@@ -2,52 +2,45 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Page;
+use App\Entity\BulletList;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-class PageCrudController extends AbstractCrudController
+use PhpParser\ErrorHandler\Collecting;
+
+class BulletListCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Page::class;
+        return BulletList::class;
     }
 
     public function createEntity(string $entityFqcn)
     {
-        $page = new Page();
-        $page->setLastModifiedBy($this->getUser()->getFullName());
-        $page->setPath('/'.$page->getSlug());
+        $list = new BulletList();
+        $list->setLastModifiedBy($this->getUser()->getFullName());
 
-        return $page;
+        return $list;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Page')
-            ->setEntityLabelInPlural('Pages')
+            ->setEntityLabelInSingular('Liste')
+            ->setEntityLabelInPlural('Listes')
             ->showEntityActionsInlined()
         ;
     }
-
-    public function configureFilters(Filters $filters): Filters
-    {
-        return $filters
-            ->add('parent_menu')
-        ;
-    }
-
+    
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('title', 'Titre');
-        yield AssociationField::new('parent_menu', 'Menu de navigation');
-        yield BooleanField::new('published', 'Publiée')
+        yield AssociationField::new('parent_page', 'Liée à la page');
+        yield CollectionField::new('bullets', 'Elements de liste')
             ->onlyOnIndex();
+        yield TextField::new('name', 'Titre de cette liste');
         yield DateField::new('created_at', 'Date de création')
             ->onlyOnIndex();
         yield DateField::new('updated_at', 'Dernière modification')
@@ -55,4 +48,5 @@ class PageCrudController extends AbstractCrudController
         yield TextField::new('last_modified_by', 'Modifié par')
             ->onlyOnIndex();
     }
+
 }

@@ -46,6 +46,9 @@ class Page
     #[ORM\OneToMany(mappedBy: 'parent_page', targetEntity: Article::class, orphanRemoval: true)]
     private Collection $articles;
 
+    #[ORM\OneToMany(mappedBy: 'parent_page', targetEntity: BulletList::class, orphanRemoval: true)]
+    private Collection $bulletLists;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
@@ -53,6 +56,7 @@ class Page
         $this->published = true;
         $this->path = '/'.$this->slug;
         $this->articles = new ArrayCollection();
+        $this->bulletLists = new ArrayCollection();
     }
 
     public function __toString()
@@ -185,6 +189,36 @@ class Page
             // set the owning side to null (unless already changed)
             if ($article->getParentPage() === $this) {
                 $article->setParentPage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, BulletList>
+     */
+    public function getBulletLists(): Collection
+    {
+        return $this->bulletLists;
+    }
+
+    public function addBulletList(BulletList $bulletList): static
+    {
+        if (!$this->bulletLists->contains($bulletList)) {
+            $this->bulletLists->add($bulletList);
+            $bulletList->setParentPage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBulletList(BulletList $bulletList): static
+    {
+        if ($this->bulletLists->removeElement($bulletList)) {
+            // set the owning side to null (unless already changed)
+            if ($bulletList->getParentPage() === $this) {
+                $bulletList->setParentPage(null);
             }
         }
 

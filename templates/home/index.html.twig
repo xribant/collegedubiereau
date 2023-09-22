@@ -4,16 +4,18 @@
 
 {% block content %}
 
-<div class="banner">
+{% for newsItem in news %}
+<div class="banner" {% if newsItem.level == "primary" %}style="background: #49b8a6;"{% elseif newsItem.level == 'warning'%}style="background: #ffCC00;"{% elseif newsItem.level == 'danger'%}style="background: #ff0000;"{% endif %}>
   <div class="banner__content">
     <div class="banner__text">
-      <strong>Information:</strong> Notre site web est en cours de renouvellement, son contenu va s'étoffer. Merci pour votre patience.
+      <strong>Information:</strong> {{ newsItem.text|raw }}
     </div>
     <button class="banner__close" type="button">
       <i class="fa fa-times" aria-hidden="true"></i>
     </button>
   </div>
 </div>
+{% endfor %}
 
  <div class="ftco-blocks-cover-1">
        

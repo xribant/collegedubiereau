@@ -2,52 +2,56 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Page;
+use App\Entity\News;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-class PageCrudController extends AbstractCrudController
+
+class NewsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Page::class;
+        return News::class;
     }
 
     public function createEntity(string $entityFqcn)
     {
-        $page = new Page();
-        $page->setLastModifiedBy($this->getUser()->getFullName());
-        $page->setPath('/'.$page->getSlug());
+        $news = new News();
+        $news->setLastModifiedBy($this->getUser()->getFullName());
+        $news->setPublished(true);
 
-        return $page;
+        return $news;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Page')
-            ->setEntityLabelInPlural('Pages')
+            ->setEntityLabelInSingular('Communication')
+            ->setEntityLabelInPlural('Communications')
             ->showEntityActionsInlined()
-        ;
-    }
-
-    public function configureFilters(Filters $filters): Filters
-    {
-        return $filters
-            ->add('parent_menu')
         ;
     }
 
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('title', 'Titre');
-        yield AssociationField::new('parent_menu', 'Menu de navigation');
+        yield TextField::new('title', 'Titre de cette communication');
+        yield ChoiceField::new('level', 'Type de communication')
+            ->allowMultipleChoices(false)
+            ->renderExpanded(true)
+            ->setChoices([
+                'Standard' => 'primary',
+                'Importante' => 'warning',
+                'Critique' => 'danger',
+            ]);
         yield BooleanField::new('published', 'Publiée')
             ->onlyOnIndex();
+        yield TextAreaField::new('text', 'Texte')
+            ->setNumOfRows(5)
+            ->onlyOnForms();
         yield DateField::new('created_at', 'Date de création')
             ->onlyOnIndex();
         yield DateField::new('updated_at', 'Dernière modification')
