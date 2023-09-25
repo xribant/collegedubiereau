@@ -39,14 +39,6 @@ class NewsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('title', 'Titre de cette communication');
-        yield ChoiceField::new('level', 'Type de communication')
-            ->allowMultipleChoices(false)
-            ->renderExpanded(true)
-            ->setChoices([
-                'Standard' => 'primary',
-                'Importante' => 'warning',
-                'Critique' => 'danger',
-            ]);
         yield BooleanField::new('published', 'Publiée')
             ->onlyOnIndex();
         yield TextAreaField::new('text', 'Texte')

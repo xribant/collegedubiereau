@@ -15,9 +15,6 @@ class News
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $level = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $text = null;
 
@@ -45,18 +42,6 @@ class News
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLevel(): ?string
-    {
-        return $this->level;
-    }
-
-    public function setLevel(string $level): static
-    {
-        $this->level = $level;
-
-        return $this;
     }
 
     public function getText(): ?string

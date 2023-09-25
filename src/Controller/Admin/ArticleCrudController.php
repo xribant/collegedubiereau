@@ -46,9 +46,10 @@ class ArticleCrudController extends AbstractCrudController
         yield TextField::new('image_file', 'Image')
             ->setFormType(VichImageType::class)
             ->onlyOnForms();
-        yield ImageField::new('image_name')
+        yield ImageField::new('image_name','Image')
             ->setBasePath('/images/article')
-            ->setUploadDir('/public/images/article');
+            ->setUploadDir('/public/images/article')
+            ->onlyOnIndex();
         yield DateField::new('created_at', 'Date de création')
             ->onlyOnIndex();
         yield DateField::new('updated_at', 'Dernière modification')

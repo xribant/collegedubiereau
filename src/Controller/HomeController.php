@@ -12,10 +12,15 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(NewsRepository $newsRepository): Response
     {
-        $news = $newsRepository->findAll();
+        $news = $newsRepository->findAllPublished();
+        $communications = [];
+
+        foreach($news as $item){
+            $communications[] = $item->getText();
+        }
 
         return $this->render('home/index.html.twig', [
-            'news' => $news
+            'news' => $communications
         ]);
     }
 }

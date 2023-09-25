@@ -3,14 +3,13 @@
 {% block title %}Ecole maternelle et primaire à Louvain-La-Neuve{% endblock %}
 
 {% block content %}
-
 <div class="banner">
   <div class="banner__content">
-    <div class="banner__text">
-      <div class="owl-carousel owl-theme">
-        {% for newsItem in news %}
-          <div class="item"><strong>Information:</strong> {{ newsItem.text|raw }}</div>
-        {% endfor %}
+    <div class="marquee-container">
+      <div class="marquee paused">
+        <div class="banner__text">
+          <div class="news-container" data-news-objects="{{ news|json_encode() }}"></div>
+        </div>
       </div>
     </div>
     <button class="banner__close" type="button">
@@ -36,9 +35,8 @@
     
 
     <div class="video-wrap">
-        <video autoplay="" loop="" muted="" class="custom-video" poster="">
-          <source src="{{ asset('build/video-background.mp4') }}" type="video/mp4">
-              Your browser does not support the video tag.
+        <video id="myVideo" autoplay preload="auto" muted class="custom-video">   
+            <source id="videoSource" class="video-file" src="images/videos/biereau1.mp4" type='video/mp4'>
         </video>
     </div>
 
@@ -80,18 +78,51 @@
 
 {% block javascripts %}
 <script>
-  $('.owl-carousel').owlCarousel({
-      loop:true,
-      margin:10,
-      nav:false,
-      items:1,
-      dots: false,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      autoplayTimeout: 10000,
-  })
-  $('.banner__close').addEventListener("click", function () {
+  /* CAROUSEL DE NEWS */
+  //list of slides to be shown
+  const content = $('.news-container').data('newsObjects')
+
+  let key = 0;
+  const marquee = $('.marquee');
+  marquee.on('animationstart', () => {
+      key = 0;
+      marquee.text(content[key]);
+  });
+  marquee.on('animationiteration', () => {
+      key++;
+      if(typeof content[key] === 'undefined') key = 0;
+      marquee.text(content[key]);
+  });
+  marquee.removeClass('paused');
+  
+  /* CAROUSEL CLOSING BUTTON */
+  $('.banner__close').on("click", function () {
       this.closest(".banner").style.display = "none";
   })
+
+  /* RANDOM VIDEO BACKGROUND */
+
+  var sources = [
+    'biereau1.mp4',
+    'biereau2.mp4',
+    'biereau3.mp4',
+    'biereau4.mp4',
+    'biereau5.mp4',
+    'biereau6.mp4',
+  ];
+
+  $('#myVideo').on('ended', function() {
+
+      Array.prototype.sample = function(){
+        return this[Math.floor(Math.random()*this.length)];
+      }
+
+      document.getElementById("videoSource").setAttribute("src",'/images/videos/'+sources.sample());
+      document.getElementById("myVideo").load();
+      document.getElementById("myVideo").play();
+  })
+
+
+
 </script>
 {% endblock %}

@@ -12,7 +12,7 @@ class NavigationMenuBuilder {
    }
 
    public function getNavigationMenu() {
-      $navigationMenu = $this->menuRepository->findAll();
+      $navigationMenu = $this->menuRepository->findAllByPosition();
       return $navigationMenu;
    }
 }

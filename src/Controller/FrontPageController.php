@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FrontPageController extends AbstractController
 {
-    #[Route('/{page_slug}', name: 'app_front_mainpage')]
+    #[Route('/{page_slug}', name: 'app_front_mainpage', priority: -1)]
     public function indexMainPage(PageRepository $pageRepository, $page_slug): Response
     {
         $page = $pageRepository->findOneBy(['slug' => $page_slug]);
@@ -19,7 +19,7 @@ class FrontPageController extends AbstractController
         ]);
     }
 
-    #[Route('/{menu_slug}/{page_slug}', name: 'app_front_subpage')]
+    #[Route('/{menu_slug}/{page_slug}', name: 'app_front_subpage', priority: -1)]
     public function indexSubPage(PageRepository $pageRepository, $page_slug): Response
     {
         $page = $pageRepository->findOneBy(['slug' => $page_slug]);

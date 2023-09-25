@@ -21,6 +21,14 @@ class MainMenuRepository extends ServiceEntityRepository
         parent::__construct($registry, MainMenu::class);
     }
 
+    public function findAllByPosition(){
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.position', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return MainMenu[] Returns an array of MainMenu objects
 //     */
