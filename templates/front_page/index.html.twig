@@ -26,31 +26,40 @@
 </div>
 
 {% for article in page.articles %}
-    <div class="site-section">
+    <div class="site-section article {{ article.backgroundColor}}">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <img src="{{ vich_uploader_asset(article, 'image_file')}}" alt="Image" class="img-fluid">
-                </div>
-                <div class="col-md-6 ml-auto pl-md-5">
-                    <span class="text-cursive h3 text-red">{{ article.title }}</span>
-                    <p>{{ article.text|raw }}</p>
-                </div>
+                {% if article.imageName %}
+                    {% if article.imagePosition == 'left' %}
+                        <div class="col-md-12 left-article">
+                            <img src="{{ vich_uploader_asset(article, 'image_file')}}" alt="Image" class="img-fluid">
+                            <span class="text-cursive h3 text-red">{{ article.title }}</span>
+                            <p>{{ article.text|raw }}</p>
+                        </div>
+                    {% else %}
+                        <div class="col-md-12 right-article ml-auto pl-md-5">
+                            <img src="{{ vich_uploader_asset(article, 'image_file')}}" alt="Image" class="img-fluid">
+                            <span class="text-cursive h3 text-red">{{ article.title }}</span>
+                            <p>{{ article.text|raw }}</p>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-md-12 ml-auto pl-md-5">
+                        <span class="text-cursive h3 text-red">{{ article.title }}</span>
+                        <p>{{ article.text|raw }}</p>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
 {% else %}
-    <div class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    Noting more to say
-                </div>
-            </div>
-        </div>
-    </div>
 {% endfor %}
 
+{% if page.slug == 'equipe-educative' %}
+    {{ include('front_page/_team.html.twig') }}
+{% endif %}
+
+{% if page.bulletLists is not empty %}
     <div class="site-section bg-info">
         <div class="container">
             <div class="row">
@@ -63,7 +72,7 @@
                                 <div class="card-header" id="heading{{ bullet.id }}">
                                     <h2 class="mb-0">
                                         <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ bullet.id }}" aria-expanded="false" aria-controls="collapse{{ bullet.id }}">
-                                        {{ bullet.number }} {{ bullet.title }}
+                                        {{ bullet.number }}. {{ bullet.title }}
                                         </button>
                                     </h2>
                                 </div>
@@ -81,6 +90,7 @@
             </div>
         </div>
     </div>
+{% endif %}
 
 {% endblock %}
 

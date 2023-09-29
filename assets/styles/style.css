@@ -1696,7 +1696,8 @@ h1, h2, h3, h4, h5,
 
 .top-social a {
   display: inline-block;
-  padding: 20px; }
+  padding: 20px;
+ }
 
 .menu-wrap {
   margin-top: 2.5rem;
@@ -1955,3 +1956,20 @@ h1, h2, h3, h4, h5,
 
 .bg-teal {
   background: #16c3b0; }
+
+  @media only screen and (min-width: 900px) {
+    .left-article img {
+      float: left;
+      max-width: 50%;
+      padding-right: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .right-article img {
+      float: right;
+      max-width: 50%;
+      padding-left: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+  }

@@ -49,6 +49,12 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?Page $parent_page = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $background_color = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image_position = null;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
@@ -167,6 +173,30 @@ class Article
     public function setParentPage(?Page $parent_page): static
     {
         $this->parent_page = $parent_page;
+
+        return $this;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->background_color;
+    }
+
+    public function setBackgroundColor(string $background_color): static
+    {
+        $this->background_color = $background_color;
+
+        return $this;
+    }
+
+    public function getImagePosition(): ?string
+    {
+        return $this->image_position;
+    }
+
+    public function setImagePosition(?string $image_position): static
+    {
+        $this->image_position = $image_position;
 
         return $this;
     }

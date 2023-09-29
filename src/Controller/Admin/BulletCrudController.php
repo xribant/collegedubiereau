@@ -8,9 +8,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 
 class BulletCrudController extends AbstractCrudController
 {
@@ -47,7 +47,7 @@ class BulletCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield IntegerField::new('number', 'Numéro d\'ordre');
+        yield NumberField::new('number', 'Numéro d\'ordre');
         yield TextField::new('title', 'Titre de cet élément');
         yield AssociationField::new('parent_list', 'Liste');
         yield TextEditorField::new('text', 'Texte')

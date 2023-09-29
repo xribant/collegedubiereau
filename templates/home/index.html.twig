@@ -6,7 +6,7 @@
 <div class="banner">
   <div class="banner__content">
     <div class="marquee-container">
-      <div class="marquee paused">
+      <div class="marquee">
         <div class="banner__text">
           <div class="news-container" data-news-objects="{{ news|json_encode() }}"></div>
         </div>
@@ -35,7 +35,7 @@
     
 
     <div class="video-wrap">
-        <video id="myVideo" autoplay preload="auto" muted class="custom-video">   
+        <video id="myVideo" autoplay playsinline muted class="custom-video">   
             <source id="videoSource" class="video-file" src="images/videos/biereau1.mp4" type='video/mp4'>
         </video>
     </div>

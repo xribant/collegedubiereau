@@ -6,6 +6,7 @@ use App\Entity\Article;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -42,6 +43,22 @@ class ArticleCrudController extends AbstractCrudController
         yield TextField::new('title', 'Titre de l\'article');
         yield TextEditorField::new('text', 'Texte de l\'article')
             ->setNumOfRows(15)
+            ->onlyOnForms();
+        yield ChoiceField::new('background_color', 'Couleur d\'arrière-plan')
+            ->setChoices([
+                'Blanc' => 'none',
+                'Gris clair' => 'bg-light',
+                'Bleu' => 'bg-info',
+                'Vert' => 'bg-teal',
+                'Jaune' => 'bg-warning'
+            ])
+            ->onlyOnForms();
+        yield ChoiceField::new('image_position', 'Position de l\'image par rapport au texte')
+            ->setChoices([
+                'A droite' => 'right',
+                'A gauche' => 'left'
+            ])
+            ->renderAsNativeWidget()
             ->onlyOnForms();
         yield TextField::new('image_file', 'Image')
             ->setFormType(VichImageType::class)
