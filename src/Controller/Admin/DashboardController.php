@@ -11,6 +11,7 @@ use App\Entity\Fonction;
 use App\Entity\Member;
 use App\Entity\Section;
 use App\Entity\News;
+use App\Entity\SectionGroup;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -53,6 +54,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Elements de liste', 'fa-solid fa-list-ul', Bullet::class);
         yield MenuItem::section('Equipe');
         yield MenuItem::linkToCrud('Sections', 'fa-solid fa-people-group', Section::class);
+        yield MenuItem::linkToCrud('Départements', 'fa-solid fa-users-rectangle', SectionGroup::class);
         yield MenuItem::linkToCrud('Fonctions', 'fa-solid fa-briefcase', Fonction::class);
         yield MenuItem::linkToCrud('Membres', 'fa-solid fa-user', Member::class);
     }
