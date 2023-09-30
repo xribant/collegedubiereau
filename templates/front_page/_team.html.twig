@@ -1,38 +1,30 @@
 <div class="site-section bg-teal">
-      <div class="container">
-        <div class="row justify-content-center text-center mb-5 section-2-title">
-          <div class="col-md-6">
-            <span class="text-cursive h5 text-red">The Team</span>
-            <h3 class="text-white text-center">Meet The Team</h3>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nesciunt nemo vel earum maxime neque!</p>
-          </div>
-        </div>
-        <div class="row align-items-stretch">
-
-        {% for section in sections %}
-            <div class="col-md-6">
-                <span class="text-cursive h1 text-red text-left">{{ section.fullName }}</span>
-            </div>
-            {% for member in section.members %}
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="post-entry-1 h-100 person-1 yellow">
-                    {% if member.imageName %}
-                        <img src="{{ vich_uploader_asset(member, 'image_file') }}" alt="Image" class="img-fluid">
-                    {% else %}
-                        <img src="{{ asset('build/no-photo.jpg') }}" alt="Image" class="img-fluid">
-                    {% endif %}
-                <div class="post-entry-1-contents">
-                    <span class="meta">{{ member.fonction.name }}</span>
-                    <h2>{{ member.fullName }}</h2>
-                </div>
+    <div class="container">
+        
+        {% for dep in departements %}
+            <div class="row text-left mb-5">
+                <div class="col-md-12">
+                    <h2 class="text-red text-cursive text-left">{{ dep.name }}</h3>
                 </div>
             </div>
-            {% else %}
-                No Members
-            {% endfor %}
-        {% else %}
-            No Sections
+            <div class="row align-items-stretch">
+                {% for member in dep.members %}
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="post-entry-1 h-100 person-1 red">
+                            {% if member.imageName %}
+                                <img src="{{ vich_uploader_asset(member, 'image_file') }}" alt="Image" class="img-fluid">
+                            {% else %}
+                                <img src="{{ asset('build/no-photo.jpg') }}" alt="Image" class="img-fluid">
+                            {% endif %}
+                            <div class="post-entry-1-contents">
+                                <span class="meta">{{ member.fonction.name }} {% for section in member.section %}{{ section.fullName }}{% endfor %}</span>
+                                <h2>{{ member.fonction.name == 'Directrice' ? member.fullName : member.firstName }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endfor %}
-        </div>
-      </div>
+        
     </div>
+</div>

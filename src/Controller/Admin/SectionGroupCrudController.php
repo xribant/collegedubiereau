@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 
 class SectionGroupCrudController extends AbstractCrudController
 {
+
     public static function getEntityFqcn(): string
     {
         return SectionGroup::class;
@@ -29,6 +30,7 @@ class SectionGroupCrudController extends AbstractCrudController
             ->setEntityLabelInSingular('Département')
             ->setEntityLabelInPlural('Départements')
             ->showEntityActionsInlined()
+            ->setDefaultSort(['position' => 'ASC'])
         ;
     }
 

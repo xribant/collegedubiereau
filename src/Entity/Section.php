@@ -18,10 +18,10 @@ class Section
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $short_name = null;
+    private ?string $shortName = null;
 
     #[ORM\Column(length: 255)]
-    #[Gedmo\Slug(fields: ['short_name'])]
+    #[Gedmo\Slug(fields: ['shortName'])]
     private ?string $slug = null;
 
     #[ORM\Column]
@@ -37,7 +37,7 @@ class Section
     private ?string $last_modified_by = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $full_name = null;
+    private ?string $fullName = null;
 
     public function __construct()
     {
@@ -58,12 +58,12 @@ class Section
 
     public function getShortName(): ?string
     {
-        return $this->short_name;
+        return $this->shortName;
     }
 
-    public function setShortName(string $short_name): static
+    public function setShortName(string $shortName): static
     {
-        $this->short_name = $short_name;
+        $this->shortName = $shortName;
 
         return $this;
     }
@@ -145,12 +145,12 @@ class Section
 
     public function getFullName(): ?string
     {
-        return $this->full_name;
+        return $this->fullName;
     }
 
-    public function setFullName(string $full_name): static
+    public function setFullName(string $fullName): static
     {
-        $this->full_name = $full_name;
+        $this->fullName = $fullName;
 
         return $this;
     }

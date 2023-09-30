@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\SectionGroupRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -31,10 +33,22 @@ class SectionGroup
     #[ORM\Column(length: 255)]
     private ?string $last_modified_by = null;
 
+    #[ORM\OneToMany(mappedBy: 'departement', targetEntity: Member::class, orphanRemoval: true)]
+    private Collection $members;
+
+    #[ORM\Column]
+    private ?int $position = null;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
+        $this->members = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     public function getId(): ?int
@@ -98,6 +112,48 @@ class SectionGroup
     public function setLastModifiedBy(string $last_modified_by): static
     {
         $this->last_modified_by = $last_modified_by;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Member>
+     */
+    public function getMembers(): Collection
+    {
+        return $this->members;
+    }
+
+    public function addMember(Member $member): static
+    {
+        if (!$this->members->contains($member)) {
+            $this->members->add($member);
+            $member->setDepartement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMember(Member $member): static
+    {
+        if ($this->members->removeElement($member)) {
+            // set the owning side to null (unless already changed)
+            if ($member->getDepartement() === $this) {
+                $member->setDepartement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): static
+    {
+        $this->position = $position;
 
         return $this;
     }

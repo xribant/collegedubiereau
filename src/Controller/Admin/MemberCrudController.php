@@ -37,11 +37,12 @@ class MemberCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield AssociationField::new('section', 'Section')
-            ->onlyOnForms();
         yield TextField::new('firstName', 'Prénom');
         yield TextField::new('lastName', 'Nom');
         yield AssociationField::new('fonction', 'Fonction');
+        yield AssociationField::new('departement', 'Département');
+        yield AssociationField::new('section', 'Si le membre est instit, quelle section')
+            ->onlyOnForms();
         yield TextField::new('image_file', 'Photo')
             ->setFormType(VichImageType::class)
             ->onlyOnForms();

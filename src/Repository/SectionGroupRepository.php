@@ -21,6 +21,15 @@ class SectionGroupRepository extends ServiceEntityRepository
         parent::__construct($registry, SectionGroup::class);
     }
 
+    public function findByPosition(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.position', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return SectionGroup[] Returns an array of SectionGroup objects
 //     */

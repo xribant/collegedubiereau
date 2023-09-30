@@ -49,6 +49,10 @@ class Member
     #[ORM\ManyToOne(inversedBy: 'members')]
     private ?Fonction $fonction = null;
 
+    #[ORM\ManyToOne(inversedBy: 'members')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?SectionGroup $departement = null;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
@@ -188,6 +192,18 @@ class Member
     public function setFonction(?Fonction $fonction): static
     {
         $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    public function getDepartement(): ?SectionGroup
+    {
+        return $this->departement;
+    }
+
+    public function setDepartement(?SectionGroup $departement): static
+    {
+        $this->departement = $departement;
 
         return $this;
     }
