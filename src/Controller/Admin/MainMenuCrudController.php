@@ -9,22 +9,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use Symfony\Component\HttpFoundation\Response;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-
-enum Direction
-{
-    case Up;
-    case Down;
-}
+use App\Service\AdminIndexPosition;
 
 class MainMenuCrudController extends AbstractCrudController
 {
     public function __construct(
-        private readonly EntityManagerInterface $em,
+        // private readonly EntityManagerInterface $em,
+        private AdminIndexPosition $position,
         private readonly MainMenuRepository $mainMenuRepository,
     ) {
     }
@@ -36,26 +31,12 @@ class MainMenuCrudController extends AbstractCrudController
 
     public function moveUp(AdminContext $context): Response
     {
-        return $this->move($context, Direction::Up);
+        return $this->position->moveUp($context);
     }
 
     public function moveDown(AdminContext $context): Response
     {
-        return $this->move($context, Direction::Down);
-    }
-
-    private function move(AdminContext $context, Direction $direction): Response
-    {
-        $object = $context->getEntity()->getInstance();
-        $newPosition = match($direction) {
-            Direction::Up => $object->getPosition() - 1,
-            Direction::Down => $object->getPosition() + 1,
-        };
-
-        $object->setPosition($newPosition);
-        $this->em->flush();
-
-        return $this->redirect($context->getReferrer());
+        return $this->position->moveDown($context);
     }
 
     public function configureCrud(Crud $crud): Crud

@@ -68,6 +68,7 @@
             <nav class="site-navigation text-left mr-auto d-none d-lg-block" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto">
                 {% for menuItem in menus.navigationMenu %}
+                  <!-- Si le menu contient des sous-menus -->
                   {% if menuItem.pages|length > 1 %}
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -79,10 +80,13 @@
                         {% endfor %}
                       </div>
                     </li>
+                  <!-- Si le menu mène directement à une page -->
                   {% else %}
                       <li>
+                        <!-- Si le menu a bien une page répertoriée afin d'éviter une erreur -->
                         {% if menuItem.pages is not empty %}
                           <a href="{{ path('app_front_mainpage', {'page_slug': menuItem.slug }) }}" class="nav-link">{{ menuItem.name }}</a>
+                        <!-- Sinon on affiche un lien vide -->
                         {% else %}
                           <a href="#" class="nav-link">{{ menuItem.name }}</a>
                         {% endif %}

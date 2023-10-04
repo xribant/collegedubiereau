@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FrontPageController extends AbstractController
 {
+   
     #[Route('/{menu_slug}/equipe-educative', name: 'app_front_team')]
     public function indexTeamPage(SectionGroupRepository $sectionGroupRepository, PageRepository $pageRepository): Response
     {

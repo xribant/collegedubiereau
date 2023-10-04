@@ -14,7 +14,7 @@
                             {% if member.imageName %}
                                 <img src="{{ vich_uploader_asset(member, 'image_file') }}" alt="Image" class="img-fluid">
                             {% else %}
-                                <img src="{{ asset('build/no-photo.jpg') }}" alt="Image" class="img-fluid">
+                                <img src="{{ asset('assets/front/images/no-photo.jpg') }}" alt="Image" class="img-fluid">
                             {% endif %}
                             <div class="post-entry-1-contents">
                                 <span class="meta">{{ member.fonction.name }} {% for section in member.section %}{{ section.fullName }}{% endfor %}</span>

@@ -37,6 +37,7 @@ class SectionGroup
     private Collection $members;
 
     #[ORM\Column]
+    #[Gedmo\SortablePosition]
     private ?int $position = null;
 
     public function __construct()

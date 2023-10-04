@@ -59,6 +59,10 @@
     {{ include('front_page/_team.html.twig') }}
 {% endif %}
 
+{% if page.slug == 'contact' %}
+    {{ include('front_page/_contact.html.twig') }}
+{% endif %}
+
 {% if page.bulletLists is not empty %}
     <div class="site-section bg-info">
         <div class="container">
