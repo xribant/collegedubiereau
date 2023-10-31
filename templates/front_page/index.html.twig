@@ -63,6 +63,10 @@
     {{ include('front_page/_contact.html.twig') }}
 {% endif %}
 
+{% if page.slug == 'inscription' %}
+    {{ include('front_page/_registration.html.twig') }}
+{% endif %}
+
 {% if page.bulletLists is not empty %}
     <div class="site-section bg-info">
         <div class="container">

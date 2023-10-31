@@ -2,39 +2,42 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Fonction;
+use App\Entity\InfoSessionDay;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 
-class FonctionCrudController extends AbstractCrudController
+
+class InfoSessionDayCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Fonction::class;
+        return InfoSessionDay::class;
     }
 
     public function createEntity(string $entityFqcn)
     {
-        $fonction = new Fonction();
-        $fonction->setLastModifiedBy($this->getUser()->getFullName());
+        $infoDay = new InfoSessionDay();
+        $infoDay->setLastModifiedBy($this->getUser()->getFullName());
 
-        return $fonction;
+        return $infoDay;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInSingular('Fonction')
-            ->setEntityLabelInPlural('Fonctions')
+            ->setEntityLabelInSingular('Journée d\'info')
+            ->setEntityLabelInPlural('Journées d\'info')
             ->showEntityActionsInlined()
         ;
     }
 
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('name', 'Intitulé de la fonction');
+        yield DateField::new('session_date', 'Date de la journée d\'info');
+        yield BooleanField::new('enabled', 'Activée');
         yield DateField::new('created_at', 'Date de création')
             ->onlyOnIndex();
         yield DateField::new('updated_at', 'Dernière modification')

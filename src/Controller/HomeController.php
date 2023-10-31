@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'app_home', options: ['sitemap' => true])]
     public function index(NewsRepository $newsRepository): Response
     {
         $news = $newsRepository->findAllPublished();

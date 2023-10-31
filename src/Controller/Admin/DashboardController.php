@@ -8,6 +8,7 @@ use App\Entity\Article;
 use App\Entity\Bullet;
 use App\Entity\BulletList;
 use App\Entity\Fonction;
+use App\Entity\InfoSessionDay;
 use App\Entity\Member;
 use App\Entity\Section;
 use App\Entity\News;
@@ -57,5 +58,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Départements', 'fa-solid fa-users-rectangle', SectionGroup::class);
         yield MenuItem::linkToCrud('Fonctions', 'fa-solid fa-briefcase', Fonction::class);
         yield MenuItem::linkToCrud('Membres', 'fa-solid fa-user', Member::class);
+        yield MenuItem::section('Journée(s) d\'infos');
+        yield MenuItem::linkToCrud('Dates', 'fa-solid fa-calendar', InfoSessionDay::class);
     }
 }
