@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\InfoSessionDayRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InfoSessionDayRepository::class)]
@@ -29,11 +31,15 @@ class InfoSessionDay
     #[ORM\Column]
     private ?bool $enabled = null;
 
+    #[ORM\OneToMany(mappedBy: 'info_session_day', targetEntity: InfoRegistration::class, orphanRemoval: true)]
+    private Collection $infoRegistrations;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
         $this->enabled = false;
+        $this->infoRegistrations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -97,6 +103,36 @@ class InfoSessionDay
     public function setEnabled(bool $enabled): static
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InfoRegistration>
+     */
+    public function getInfoRegistrations(): Collection
+    {
+        return $this->infoRegistrations;
+    }
+
+    public function addInfoRegistration(InfoRegistration $infoRegistration): static
+    {
+        if (!$this->infoRegistrations->contains($infoRegistration)) {
+            $this->infoRegistrations->add($infoRegistration);
+            $infoRegistration->setInfoSessionDay($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInfoRegistration(InfoRegistration $infoRegistration): static
+    {
+        if ($this->infoRegistrations->removeElement($infoRegistration)) {
+            // set the owning side to null (unless already changed)
+            if ($infoRegistration->getInfoSessionDay() === $this) {
+                $infoRegistration->setInfoSessionDay(null);
+            }
+        }
 
         return $this;
     }

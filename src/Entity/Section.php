@@ -39,11 +39,15 @@ class Section
     #[ORM\Column(length: 255)]
     private ?string $fullName = null;
 
+    #[ORM\ManyToMany(targetEntity: InfoRegistration::class, mappedBy: 'sections')]
+    private Collection $infoRegistrations;
+
     public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
         $this->members = new ArrayCollection();
+        $this->infoRegistrations = new ArrayCollection();
     }
 
     public function __toString()
@@ -151,6 +155,33 @@ class Section
     public function setFullName(string $fullName): static
     {
         $this->fullName = $fullName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, InfoRegistration>
+     */
+    public function getInfoRegistrations(): Collection
+    {
+        return $this->infoRegistrations;
+    }
+
+    public function addInfoRegistration(InfoRegistration $infoRegistration): static
+    {
+        if (!$this->infoRegistrations->contains($infoRegistration)) {
+            $this->infoRegistrations->add($infoRegistration);
+            $infoRegistration->addSection($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInfoRegistration(InfoRegistration $infoRegistration): static
+    {
+        if ($this->infoRegistrations->removeElement($infoRegistration)) {
+            $infoRegistration->removeSection($this);
+        }
 
         return $this;
     }

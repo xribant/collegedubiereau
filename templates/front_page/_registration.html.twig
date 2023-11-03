@@ -1,7 +1,72 @@
-<div class="site-section bg-teal">
+<div id="info-registration" class="site-section bg-light">
     <div class="container">
-        
-        <p>Hello</p>
-        
+        <div class="row justify-content-center text-center">
+            <div class="col-7 text-center mb-5">
+            <h2>Inscription aux séances d'information</h2>
+            <p>Veuillez remplir le formulaire ci-dessous afin de vous inscrire à l'une des deux séances d'information. Une confirmation vous sera envoyée par e-mail.</p>
+            </div>
+        </div>
+       <div class="row">
+          <div class="col-lg-8 mb-5" >
+            {% if info_session_days %}
+              {{ form_start(form) }}
+                <div class="form-group row">
+                  <div class="col-md-6 mb-4 mb-lg-0">
+                    {{ form_row(form.firstName) }}
+                  </div>
+                  <div class="col-md-6">
+                    {{ form_row(form.lastName) }}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    {{ form_row(form.email) }}
+                  </div>
+                  <div class="col-md-6">
+                    {{ form_row(form.phone) }}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    {{ form_row(form.child_number) }}
+                  </div>
+                  <div class="col-md-6">
+                    {{ form_row(form.info_session_day) }}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    {{ form_row(form.sections) }}
+                    <small>* Ctrl + Click (Win) ou Command + Click (Mac) pour sélectionner plusieurs années.</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6 mr-auto">
+                    <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Confirmer mon inscription">
+                  </div>
+                </div>
+              {{ form_end(form) }}
+            {% else %}
+                <div class="form-group row">
+                  <div class="col-md-12 mr-auto">
+                    <div class="alert alert-info text-center">Aucune date de séance d'information planifiée pour le moment. <br>Pour toute question sur les inscriptions, veuillez contacter l'école.</div>
+                  </div>
+                </div>
+            {% endif %}
+          </div>
+          <div class="col-lg-4 ml-auto">
+            <div class="bg-white p-3 p-md-5">
+              <h3 class="text-black mb-4">Contact</h3>
+              <ul class="list-unstyled footer-link">
+                <li class="d-block mb-3">
+                  <span class="d-block text-black">Adresse:</span>
+                  <span>2 Rue du Collège, 1348 Ottignies-Louvain-La-Neuve</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Téléphone:</span><span>+32 (0)10 45 03 06</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>direction@collegedubiereau.be</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
