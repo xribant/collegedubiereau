@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PageRepository;
+use App\Service\CalendarFileGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mime\Address;
@@ -20,7 +21,7 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 class InfoRegistrationController extends AbstractController
 {
     #[Route('/vie-scolaire/inscription', name: 'app_info_registration')]
-    public function index(Request $request, PageRepository $pageRepository, EntityManagerInterface $em, MailerInterface $mailer, FlasherInterface $flasher, InfoSessionDayRepository $infoSessionDayRepository): Response
+    public function index(Request $request, PageRepository $pageRepository, EntityManagerInterface $em, MailerInterface $mailer, FlasherInterface $flasher, InfoSessionDayRepository $infoSessionDayRepository, CalendarFileGenerator $calendar): Response
     {
         $page = $pageRepository->findOneBy(['slug' => 'inscription']);
 
@@ -33,18 +34,24 @@ class InfoRegistrationController extends AbstractController
             $em->persist($registration);
             $em->flush();
 
+            $file = $calendar->createIcs($registration);
+            
             $email = (new TemplatedEmail())
                 ->from('no-reply@collegedubiereau.be')
-                ->to(new Address('xribant@gmail.com'))
+                ->to(new Address($registration->getEmail()))
                 ->subject('Confirmation d\'inscription à la séance d\'info du : '.$registration->getInfoSessionDay()->getSessionDate()->format('d/m/Y'))
                 ->htmlTemplate('documents/registration_confirmation.html.twig')
                 ->context([
                     'registration' => $registration
                 ])
+                ->attachFromPath($this->getParameter('kernel.project_dir').'/public/'.$file)
             ;
 
             try {
                 $mailer->send($email);
+
+                // Remove .ics file from temp directory
+                unlink($file);
                 
                 $flasher
                     ->options([
@@ -54,7 +61,7 @@ class InfoRegistrationController extends AbstractController
                     ->addSuccess('Votre inscription a bien été enregistrée, vous allez recevoir un e-mail de confirmation.')
                 ;
 
-                return $this->redirectToRoute('app_home');
+                return $this->redirectToRoute('app_info_registration');
 
             } catch (TransportExceptionInterface $e) {
                 $flasher
@@ -65,8 +72,9 @@ class InfoRegistrationController extends AbstractController
                     ->addError('<strong>'.$e->getMessage().'</strong>')
                 ;
             }
-
-            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+        
+            return $this->redirectToRoute('app_info_registration', [], Response::HTTP_SEE_OTHER);
+            
         }
 
         return $this->render('front_page/index.html.twig', [

@@ -14,6 +14,7 @@
         "doctrine/orm": "^2.13",
         "easycorp/easyadmin-bundle": "^4.7",
         "friendsofsymfony/ckeditor-bundle": "^2.4",
+        "jsvrcek/ics-bundle": "^1.1",
         "knplabs/knp-menu-bundle": "^3.2",
         "php-flasher/flasher-symfony": "^1.15",
         "phpdocumentor/reflection-docblock": "^5.3",

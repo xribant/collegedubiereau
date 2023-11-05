@@ -22,4 +22,5 @@ return [
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Presta\SitemapBundle\PrestaSitemapBundle::class => ['all' => true],
+    Jsvrcek\Bundle\IcsBundle\JsvrcekIcsBundle::class => ['all' => true],
 ];

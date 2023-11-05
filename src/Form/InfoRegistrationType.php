@@ -76,7 +76,7 @@ class InfoRegistrationType extends AbstractType
             ])
             ->add('info_session_day', EntityType::class, [
                 'label' => false,
-                'placeholder' => 'Je m\'inscrit à la séance d\'info du',
+                'placeholder' => 'Je m\'inscris à la séance d\'info du',
                 'class' => InfoSessionDay::class,
                 'query_builder' => function (EntityRepository $er): QueryBuilder {
                     return $er->createQueryBuilder('day')

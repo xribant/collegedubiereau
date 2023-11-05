@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 
 
 class InfoSessionDayCrudController extends AbstractCrudController
@@ -36,7 +37,7 @@ class InfoSessionDayCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield DateField::new('session_date', 'Date de la journée d\'info');
+        yield DateTimeField::new('session_date', 'Date de la journée d\'info');
         yield BooleanField::new('enabled', 'Activée');
         yield DateField::new('created_at', 'Date de création')
             ->onlyOnIndex();

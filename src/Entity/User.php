@@ -249,7 +249,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
             return $this->firstName . ' ' . $this->lastName;
         }
     
-        return $this->username;
+        return $this->firstName;
     }
 
     public function serialize()

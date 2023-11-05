@@ -27,7 +27,9 @@ class UserCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('full_name', 'Nom');
+        yield TextField::new('full_name', 'Nom')->onlyOnIndex();
+        yield TextField::new('firstName', 'Prénom')->onlyWhenCreating();
+        yield TextField::new('lastName', 'Nom')->onlyWhenCreating();
         yield TextField::new('email', 'E-Mail');
         yield ArrayField::new('roles', 'Rôles');
         yield DateField::new('created_at', 'Date de création')
